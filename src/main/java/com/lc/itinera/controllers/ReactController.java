@@ -1,13 +1,12 @@
 package com.lc.itinera.controllers;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class ReactController {
-	//    @RequestMapping("/{path:^(?!api).*$}/**")
-	@RequestMapping
-	public String index() {
-		return "/index.html";
+	@GetMapping(value = "/**/{path:[^\\.]*}")
+	public String forward() {
+		return "forward:/";
 	}
 }
