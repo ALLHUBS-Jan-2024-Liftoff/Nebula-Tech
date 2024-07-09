@@ -20,6 +20,6 @@ WORKDIR itinera
 RUN gradle npmInstallDependencies
 RUN gradle npmBuild
 RUN rm -rf /itinera/src/main/react
-RUN gradle clean build --refresh-dependencies
+RUN gradle build
 ENTRYPOINT ["java", "-jar", "/itinera/build/libs/itinera-0.0.1-SNAPSHOT.jar"]
 EXPOSE 8080
