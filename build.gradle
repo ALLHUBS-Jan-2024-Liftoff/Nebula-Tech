@@ -41,10 +41,6 @@ task npmBuild(type: NpmTask) {
 	args = ['run', 'build']
 }
 
-processResources {
-    dependsOn 'npmBuild'
-}
-
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
