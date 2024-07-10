@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import reactLogo from '../assets/react.svg'
 import viteLogo from '/vite.svg'
 import './DemoPage.css'
@@ -9,6 +10,7 @@ function DemoPage() {
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
 
+// on mount --> first api
   useEffect(() => {
     fetch('/api/demo')
       .then(response => response.json())
@@ -19,6 +21,7 @@ function DemoPage() {
     event.preventDefault();
     const data = { name, description };
 
+// second api
     fetch('/api/demo', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -34,6 +37,7 @@ function DemoPage() {
 
   return (
       <>
+      <Link to="/">Go to Landing Page</Link>
         <h1>DEMO PAGE</h1>
         <h2>This is demo GET</h2>
          {data && (

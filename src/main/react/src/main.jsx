@@ -1,14 +1,20 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import LandingPage from './pages/LandingPage'
 import DemoPage from './pages/DemoPage'
-import './index.css'
+import './assets/styles/global.css'
+
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <DemoPage/>,
+    element: <LandingPage/>,
   },
+  {
+      path: "/demo",
+      element: <DemoPage/>,
+    },
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(
