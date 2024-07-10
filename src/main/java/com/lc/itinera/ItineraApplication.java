@@ -9,5 +9,4 @@ public class ItineraApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(ItineraApplication.class, args);
 	}
-
 }
