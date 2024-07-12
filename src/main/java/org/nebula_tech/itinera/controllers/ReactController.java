@@ -1,4 +1,4 @@
-package com.lc.itinera.controllers;
+package org.nebula_tech.itinera.controllers;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;

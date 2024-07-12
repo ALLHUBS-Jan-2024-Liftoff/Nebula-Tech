@@ -1,7 +1,7 @@
-package com.lc.itinera.controllers;
+package org.nebula_tech.itinera.controllers;
 
-import com.lc.itinera.dto.DemoRequest;
-import com.lc.itinera.dto.DemoResponse;
+import org.nebula_tech.itinera.dto.DemoRequest;
+import org.nebula_tech.itinera.dto.DemoResponse;
 import org.springframework.web.bind.annotation.*;
 
 @RestController

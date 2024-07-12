@@ -1,4 +1,4 @@
-package com.lc.itinera;
+package org.nebula_tech.itinera;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

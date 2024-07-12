@@ -1,4 +1,4 @@
-package com.lc.itinera.dto;
+package org.nebula_tech.itinera.dto;
 
 public class DemoResponse {
 	private String message;
