@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { CreditCard2Back } from 'react-bootstrap-icons'
+import LandingModal from '../components/landing/LandingModal'
+import Button from 'react-bootstrap/Button'
 import reactLogo from '../assets/react.svg'
 import viteLogo from '/vite.svg'
 import './DemoPage.css'
@@ -9,6 +12,8 @@ function DemoPage() {
   const [count, setCount] = useState(0)
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
+
+  const [modalShow, setModalShow] = useState(false);
 
 // on mount --> first api
   useEffect(() => {
@@ -37,6 +42,15 @@ function DemoPage() {
 
   return (
       <>
+      <Button variant="warning" onClick={() => setModalShow(true)}>
+        Launch vertically centered modal
+      </Button>
+
+      <LandingModal
+        show={modalShow}
+        onHide={() => setModalShow(false)}
+      />
+      <CreditCard2Back color="#89bc00" size={96} />
       <Link to="/">Go to Landing Page</Link>
         <h1>DEMO PAGE</h1>
         <h2>This is demo GET</h2>
