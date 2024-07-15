@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client'
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import LandingPage from './pages/LandingPage'
 import DemoPage from './pages/DemoPage'
+import 'bootstrap/dist/css/bootstrap.min.css'
 import './assets/styles/global.css'
 
 
