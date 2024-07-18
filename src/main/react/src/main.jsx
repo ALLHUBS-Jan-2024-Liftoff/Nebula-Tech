@@ -5,6 +5,7 @@ import LandingPage from './pages/LandingPage'
 import DemoPage from './pages/DemoPage'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import './assets/styles/global.css'
+import ContactPage from './pages/ContactPage'
 
 
 const router = createBrowserRouter([
@@ -19,7 +20,7 @@ const router = createBrowserRouter([
     {
       path: "/contact",
       element: <ContactPage/>,
-    },
+    }
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(
