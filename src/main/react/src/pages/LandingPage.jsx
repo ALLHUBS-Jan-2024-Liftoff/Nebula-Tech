@@ -10,6 +10,7 @@ function LandingPage() {
   return (
     <>
       <Link to="/demo">Go to Demo Page</Link>
+      <Link to="/contact">Contact Us!</Link>
       <div>
         <a href="https://vitejs.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />
