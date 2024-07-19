@@ -6,13 +6,14 @@ import "./NavBar.css";
 
 function NavBar() {
     const [navPanel, setNavPanel] = useState(false);
+
     const handleButtonClick = (e) => {
         e.preventDefault();
         setNavPanel(!navPanel);
     }
     const mainNavPanelClickOutside = (event) => {
         if (event.target.className.includes("nav-main-link-trips")) {
-            return
+            return;
         }
         if (!event.target.closest('.nav-trips-submenu')) {
             setNavPanel(false);

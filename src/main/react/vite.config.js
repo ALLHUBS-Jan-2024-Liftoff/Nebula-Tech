@@ -18,7 +18,7 @@ export default defineConfig({
 // GET localhost:8080/api/demo
 //      --> port 8080 doesn't exist when deployed
 //          --> only frontend port 5173 works when deployed
-// two ports running locally but when deployed, only one port available
+// two ports running locally but when deployed, only one port available & path cannot be called localhost:####
 
 // http//:itinera.com/api/demo
 //      --> allows api calls from frontend without pointing to localhost:8080

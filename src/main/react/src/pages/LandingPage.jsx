@@ -1,12 +1,9 @@
 import { useState } from 'react'
-// import { Link } from 'react-router-dom'
-// import reactLogo from '../assets/react.svg'
 import NavBar from '../components/common/NavBar'
 import introLandingImg from '../assets/images/intro-landing.jpg'
 import'./LandingPage.css'
 
 function LandingPage() {
-  const [count, setCount] = useState(0);
   return (
     <>
       <NavBar />
