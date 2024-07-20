@@ -6,14 +6,13 @@ import "./NavBar.css";
 
 function NavBar() {
     const [navPanel, setNavPanel] = useState(false);
-
     const handleButtonClick = (e) => {
         e.preventDefault();
         setNavPanel(!navPanel);
     }
     const mainNavPanelClickOutside = (event) => {
         if (event.target.className.includes("nav-main-link-trips")) {
-            return;
+            return
         }
         if (!event.target.closest('.nav-trips-submenu')) {
             setNavPanel(false);
@@ -162,7 +161,7 @@ function NavBar() {
                 <a href="#"><Headset color="#212529" size={18}/>Contact us</a>
             </nav>
             <form>
-                <input autocomplete="off" id="trip-search" name="query" placeholder="Search all trips"  />
+                <input autoComplete="off" id="trip-search" name="query" placeholder="Search all trips"  />
                 <button type="submit"><Search color="#212529" size={16}/></button>          
             </form>
         </div>
