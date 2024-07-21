@@ -6,6 +6,7 @@ function ContactPage() {
             <Link to="/">Go to Landing Page</Link>
             <h1> Contact Us</h1>
             <p>Have questions? Send us a quick note below:</p>
+            <p>We will respond to your inquiry within 48 hours.</p>
 
             <div>
                 <Form action="/contact" method="post">
