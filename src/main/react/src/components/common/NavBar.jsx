@@ -158,7 +158,7 @@ function NavBar() {
             <nav className='secondary-nav'>
                 <a href="#"><PersonCircle color="#212529" size={18}/>My Account</a>
                 <a href="#"><HeartFill color="#212529" size={16}/>Wishlist</a>
-                <a href="#"><Headset color="#212529" size={18}/>Contact us</a>
+                <Link to="/contact"><Headset color="#212529" size={18} /> Contact us</Link>
             </nav>
             <form>
                 <input autoComplete="off" id="trip-search" name="query" placeholder="Search all trips"  />

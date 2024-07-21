@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client'
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import LandingPage from './pages/LandingPage'
 import DemoPage from './pages/DemoPage'
+import ContactPage from './pages/ContactPage'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import './assets/styles/global.css'
 
@@ -15,6 +16,10 @@ const router = createBrowserRouter([
   {
       path: "/demo",
       element: <DemoPage/>,
+    },
+    {
+      path: "/contact",
+      element: <ContactPage/>,
     },
 ]);
 
