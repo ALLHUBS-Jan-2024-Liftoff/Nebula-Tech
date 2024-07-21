@@ -8,12 +8,12 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/api")
 public class DemoController {
 
-	@GetMapping("/demo")
+	@GetMapping("/demo") // sends JSON as data transfer object
 	public DemoResponse getDemo() {
 		return new DemoResponse("Hello", "World");
 	}
 
-	@PostMapping("/demo")
+	@PostMapping("/demo") // returns input field values
 	public DemoResponse createDemo(@RequestBody DemoRequest request) {
 		return new DemoResponse(request.getName(), request.getDescription());
 	}

@@ -1,0 +1,165 @@
+.nav-container {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    display: grid;
+    -webkit-align-items: end;
+    -webkit-box-align: end;
+    -ms-flex-align: end;
+    align-items: end;
+    gap: 16px;
+    grid-template-columns: auto 1fr max-content;
+    padding: 20px 20px 15px;
+}
+.nav-itinera-logo-link {
+    margin-right: 35px;
+}
+.nav-itinera-logo-link img {
+    width: 110px;
+    height: auto;
+    padding: 0;
+    outline: none;
+}
+.nav-trips-submenu {
+    background-color: #fff;
+    border-top: 1px solid rgb(209, 209, 209);
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 2px 4px;
+    display: block;
+    left: 0px;
+    padding: 30px 15px 40px 50px;
+    position: absolute;
+    right: 0px;
+    top: 100%;
+    z-index: 1000;
+}
+.nav-main-link-ul {
+    margin: 0;
+    padding: 0;
+    -webkit-align-items: end;
+    -webkit-box-align: end;
+    -ms-flex-align: end;
+    align-items: end;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    gap: 42px;
+    -webkit-box-pack: start;
+    -ms-flex-pack: start;
+    -webkit-justify-content: start;
+    justify-content: start;
+}
+.nav-main-link-li {
+    display: inline;
+}
+.nav-main-link {
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    line-height: 20px;
+    position: relative;
+    -webkit-text-decoration: none;
+    text-decoration: none;
+    text-transform: uppercase;
+    word-spacing: 1px;
+    color: inherit;
+}
+.nav-main-link.active::after {
+    background: rgb(59, 112, 214);
+    bottom: -18px;
+    content: "";
+    height: 3px;
+    left: 0px;
+    position: absolute;
+    width: 100%;
+    z-index: 1;
+}
+.nav-main-link:hover {
+    color: #3b70d6;
+}
+.nav-main-link-login {
+    color: #F05E40;
+}
+.nav-submenu-title-ul {
+    display: flex;
+    padding: 0;
+    gap: 100px;
+    list-style-type: none;
+}
+.nav-submenu-title {
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 19px;
+    margin-bottom: 18px;
+}
+.nav-submenu-items {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    padding: 0;
+    list-style-type: none;
+}
+.nav-submenu-items a {
+    color: #191919;
+    font-size: 16px;
+    font-weight: 500;
+    text-decoration: none;
+}
+.nav-submenu-items a:hover {
+    color: #3b70d6;
+}
+.secondary-nav-container {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+.secondary-nav {
+    display: flex;
+    justify-content: end;
+    gap: 22px;
+}
+.secondary-nav a {
+    color: inherit;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+}
+.secondary-nav a:hover {
+    color: #3b70d6;
+}
+.secondary-nav a svg {
+    margin-right: 5px;
+}
+.secondary-nav-container form {
+    -webkit-align-items: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    background: #fff;
+    box-shadow: 0 0 0 1px #191919;
+    min-width: 330px;
+    height: 40px;
+    display: grid;
+    grid-template-columns: auto min-content;
+    position: relative;
+}
+.secondary-nav-container form input {
+    padding: 0 15px;
+    font-size: 14px;
+    font-weight: 600;
+    border: 0;
+    outline: 0;
+}
+.secondary-nav-container form button {
+    background-color: #F98E64;
+	border: none;
+	outline: inherit;
+    border-left: 1px solid #191919;
+	padding: 0;
+    width: 40px;
+    min-width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
