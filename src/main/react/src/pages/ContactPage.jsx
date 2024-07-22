@@ -47,7 +47,12 @@ const ContactPage = () => {
             <main>
                 <section className='intro-landing-section'>
                     <div className='intro-landing-section-column'>
-                        <h1>Get in touch with us</h1>
+                        <h1>Have questions?</h1>
+                        <h2>Call us at: 1-800-555-5687</h2>
+                        <h3><b>Weekdays, </b>9am-6pm CST</h3>
+                        <h2>OR</h2>
+                        <h4>Complete the form below.</h4>
+                        <h4>Our team will respond to your inquiry within 48 hours.</h4>
                     </div>
                 </section>
             </main>
