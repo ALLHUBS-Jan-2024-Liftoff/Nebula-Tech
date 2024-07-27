@@ -1,0 +1,35 @@
+.checkout-stripe-form-wrapper {
+    width: 470px;
+    min-width: 470px;
+    padding-top: 60px;
+}
+.checkout-stripe-form-wrapper a {
+    display: flex-inline;
+    align-items: center;
+    cursor: pointer;
+}
+.checkout-stripe-form-wrapper a span {
+    margin-left: 15px;
+    font-size: 14px;
+    font-weight: 600;
+}
+.checkout-stripe-form-wrapper h2 {
+    margin: 25px 0;
+    color: #3b70d6;
+    font-size: 24px;
+    line-height: 32px;
+    font-weight: 700;
+}
+.checkout-stripe-form-wrapper button {
+    width: 100%;
+    background: #3b70d6;
+    border-radius: 0px;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    display: block;
+    font-weight: 500;
+    margin: 24px 0 40px 0;
+    padding: 10px 24px;
+    width: 100%;
+}
