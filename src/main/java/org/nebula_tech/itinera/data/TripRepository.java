@@ -1,9 +1,9 @@
 package org.nebula_tech.itinera.data;
-import org.nebula_tech.itinera.models.User;
+import org.nebula_tech.itinera.models.Trip;
 import org.springframework.data.repository.CrudRepository;
 
-public interface UserRepository extends CrudRepository<User, Integer> {
+public interface TripRepository extends CrudRepository<Trip, Integer> {
 
-    User findByUsername(String username);
+   
 
 }
