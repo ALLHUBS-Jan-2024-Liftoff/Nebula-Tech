@@ -1,0 +1,49 @@
+.checkout-email-form-wrapper {
+    width: 400px;
+    min-width: 400px;
+    margin: 0 auto;
+    padding-top: 25px;
+}
+.checkout-email-form-wrapper a {
+    display: flex-inline;
+    align-items: center;
+    cursor: pointer;
+}
+.checkout-email-form-wrapper a span {
+    margin-left: 15px;
+    font-size: 14px;
+    font-weight: 600;
+}
+.checkout-email-form-wrapper h2 {
+    margin: 25px 0;
+    color: #3b70d6;
+    font-size: 24px;
+    line-height: 32px;
+    font-weight: 700;
+}
+.checkout-email-form-wrapper label {
+    font-size: 10px;
+    font-weight: 600;
+}
+.checkout-email-form-wrapper input {
+    height: 50px;
+}
+.checkout-email-form-wrapper .invalid-feedback,
+.checkout-email-form-wrapper .valid-feedback {
+    font-size: 14px;
+    font-weight: 300;
+    font-style: italic;
+}
+.checkout-email-form-wrapper button {
+    width: 100%;
+    background: #3b70d6;
+    border-radius: 0px;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    display: block;
+    font-weight: 500;
+    margin-top: 24px;
+    padding: 10px 24px;
+    width: 100%;
+}

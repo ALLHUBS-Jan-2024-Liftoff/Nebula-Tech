@@ -4,6 +4,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import LandingPage from './pages/LandingPage'
 import DemoPage from './pages/DemoPage'
 import ContactPage from './pages/ContactPage'
+import CheckoutPage from './pages/CheckoutPage'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import './assets/styles/global.css'
 
@@ -14,13 +15,17 @@ const router = createBrowserRouter([
     element: <LandingPage/>,
   },
   {
-      path: "/demo",
-      element: <DemoPage/>,
-    },
-    {
-      path: "/contact",
-      element: <ContactPage/>,
-    },
+    path: "/demo",
+    element: <DemoPage/>,
+  },
+  {
+    path: "/contact",
+    element: <ContactPage/>,
+  },
+  {
+    path: "/checkout",
+    element: <CheckoutPage/>,
+  },
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(
