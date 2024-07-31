@@ -1,7 +1,7 @@
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 
-function LandingModal(props) {
+function ModalExample(props) {
   return (
     <Modal
       {...props}
@@ -29,4 +29,4 @@ function LandingModal(props) {
   );
 }
 
-export default LandingModal;
+export default ModalExample;

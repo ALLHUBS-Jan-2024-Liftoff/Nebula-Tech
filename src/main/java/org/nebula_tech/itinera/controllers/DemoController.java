@@ -13,7 +13,7 @@ public class DemoController {
 		return new DemoResponse("Hello", "World");
 	}
 
-	@PostMapping("/demo") // returns input field values
+	@PostMapping("/demo") // returns demo form input values
 	public DemoResponse createDemo(@RequestBody DemoRequest request) {
 		return new DemoResponse(request.getName(), request.getDescription());
 	}

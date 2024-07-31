@@ -14,26 +14,24 @@ import './CheckoutPage.css'
 function CheckoutPage() {
     const [selectedForm, setSelectedForm] = useState(0);
     const [checkout, setCheckout] = useState({
-        user: { // UserDTO
+        account: { // Account model
             firstName: "",
             middleName: "",
             lastName: "",
+            suffix: "",
             email: "",
+            phone: "",
             nationality: "",
             sex: "",
             dateOfBirth: "",
             hasGroup: ""
         },
-        trip: { id: "trip_id", date: "11/11/2024" }, // TripDTO
-        stripe: {} // StripeDTO
+        tripId: "test_trip_id",
+        tripDate: "13/12/2024"
     });
-//   useEffect(() => {
-//     fetch('/api/demo')
-//       .then(response => response.json())
-//       .then(data => setData(data));
-//   }, []);
-    const handleUserChange = (field, value) => {
-        setCheckout({ ...checkout, user: { ...checkout.user, [field]: value } });
+
+    const handleAccountChange = (field, value) => {
+        setCheckout({ ...checkout, account: { ...checkout.account, [field]: value } });
     };
     const handleFormChange = (index) => {
         setSelectedForm(index);
@@ -46,17 +44,17 @@ function CheckoutPage() {
                 <Link to="/">
                     <img src={itineraLogo} alt="itinera logo" />
                 </Link>
-                <Link to="contact">
+                <Link to="/contact">
                     contact us
                 </Link>
             </div>
         </div>
-        {selectedForm === 0 ? <CheckoutEmailForm onEmailChange={handleUserChange} onFormChange={handleFormChange} /> : null}
+        {selectedForm === 0 ? <CheckoutEmailForm onEmailChange={handleAccountChange} onFormChange={handleFormChange} checkoutAccount={checkout.account} /> : null}
         {selectedForm === 1 || selectedForm === 2 || selectedForm === 3 ? (
             <div className='checkout-container'>
-                {selectedForm === 1 ? <CheckoutTravelForm onHasGroupChange={handleUserChange} onFormChange={handleFormChange} /> : null}
-                {selectedForm === 2 ? <CheckoutPersonalForm onPersonalChange={handleUserChange} onFormChange={handleFormChange} parentEmail={checkout.user.email} /> : null}
-                {selectedForm === 3 ? <CheckoutStripeForm onFormChange={handleFormChange} /> : null}
+                {selectedForm === 1 ? <CheckoutTravelForm onHasGroupChange={handleAccountChange} onFormChange={handleFormChange} checkoutAccount={checkout.account} /> : null}
+                {selectedForm === 2 ? <CheckoutPersonalForm onPersonalChange={handleAccountChange} onFormChange={handleFormChange} checkoutAccount={checkout.account} /> : null}
+                {selectedForm === 3 ? <CheckoutStripeForm onFormChange={handleFormChange} checkoutData={checkout} /> : null}
                 <div className='checkout-close-col'>
                     <Link to="/"><X color="#000" size={22}/></Link>
                 </div>

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { CreditCard2Back } from 'react-bootstrap-icons'
-import LandingModal from '../components/landing/LandingModal'
+import ModalExample from '../components/common/ModalExample'
 import Button from 'react-bootstrap/Button'
 import './DemoPage.css'
 
@@ -44,12 +44,12 @@ function DemoPage() {
         Launch vertically centered modal
       </Button>
 
-      <LandingModal
+      <ModalExample
         show={modalShow}
         onHide={() => setModalShow(false)}
       />
       <CreditCard2Back color="#89bc00" size={96} />
-      <Link to="/">Go to Landing Page</Link>
+      <Link to="/">Landing Page</Link>
         <h1>DEMO PAGE</h1>
         <h2>This is demo GET</h2>
          {data && (
