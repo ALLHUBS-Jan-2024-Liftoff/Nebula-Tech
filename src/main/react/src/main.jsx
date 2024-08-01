@@ -8,6 +8,7 @@ import CheckoutPage from './pages/CheckoutPage'
 import CheckoutSuccessPage from './pages/CheckoutSuccessPage'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import './assets/styles/global.css'
+import Blog from './components/blog/Blog'
 
 
 const router = createBrowserRouter([
@@ -30,6 +31,10 @@ const router = createBrowserRouter([
   {
     path: "/checkout/success",
     element: <CheckoutSuccessPage/>,
+  },
+  {
+    path: "/blog",
+    element: <Blog/>,
   },
 ]);
 

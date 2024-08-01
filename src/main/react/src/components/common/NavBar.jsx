@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import { PersonCircle, HeartFill, Headset, Search } from 'react-bootstrap-icons'
+import { PersonCircle, HeartFill, Headset, Search, Journal } from 'react-bootstrap-icons'
 import itineraLogo from '../../assets/images/itinera-logo.jpg'
 import "./NavBar.css";
 
@@ -159,6 +159,8 @@ function NavBar() {
                 <a href="#"><PersonCircle color="#212529" size={18}/>My Account</a>
                 <a href="#"><HeartFill color="#212529" size={16}/>Wishlist</a>
                 <Link to="/contact"><Headset color="#212529" size={18} /> Contact us</Link>
+                <Link to="/blog"><Journal color="#212529" size={18} /> Blog</Link>
+            
             </nav>
             <form>
                 <input autoComplete="off" id="trip-search" name="query" placeholder="Search all trips"  />
