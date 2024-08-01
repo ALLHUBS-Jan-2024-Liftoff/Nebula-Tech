@@ -23,7 +23,7 @@ function LandingSearchForm() {
                 </span>
                 <button type="submit"><ArrowRight color="#fff" size={24}/></button>
             </div>
-            <Link to="/explore">See all the trips</Link>
+            <Link to="/explore">View All Trips</Link>
         </form>
     </>
   );

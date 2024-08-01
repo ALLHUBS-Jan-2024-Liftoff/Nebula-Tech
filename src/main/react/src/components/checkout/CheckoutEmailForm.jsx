@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ArrowLeft } from 'react-bootstrap-icons'
 import Button from 'react-bootstrap/Button';
@@ -7,10 +7,15 @@ import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import './CheckoutEmailForm.css'
 
-function CheckoutEmailForm({ onEmailChange, onFormChange }) {
+function CheckoutEmailForm({ onEmailChange, onFormChange, checkoutAccount }) {
     const navigate = useNavigate();
     const [validated, setValidated] = useState(false);
     const [email, setEmail] = useState('');
+
+    useEffect(() => {
+      if (checkoutAccount.email) { setEmail(checkoutAccount.email); }
+    }, []);
+
     const handleEmailChange = (e) => {
         setEmail(e.target.value);
         onEmailChange('email', e.target.value);
