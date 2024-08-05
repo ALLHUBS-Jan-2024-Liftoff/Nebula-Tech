@@ -9,6 +9,8 @@ import CheckoutSuccessPage from './pages/CheckoutSuccessPage'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import './assets/styles/global.css'
 import Blog from './components/blog/Blog'
+import RegisterForm from "./pages/RegisterForm.jsx";
+import LoginForm from "./pages/LoginForm.jsx";
 
 
 const router = createBrowserRouter([
@@ -35,6 +37,14 @@ const router = createBrowserRouter([
   {
     path: "/blog",
     element: <Blog/>,
+  },
+  {
+    path: "/login",
+    element: <LoginForm />,
+  },
+  {
+    path: "/register",
+    element: <RegisterForm />,
   },
 ]);
 
