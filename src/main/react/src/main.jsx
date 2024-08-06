@@ -13,7 +13,6 @@ import LoginForm from "./pages/LoginForm.jsx";
 import 'bootstrap/dist/css/bootstrap.min.css'
 import './assets/styles/global.css'
 
-
 const router = createBrowserRouter([
   {
     path: "/",

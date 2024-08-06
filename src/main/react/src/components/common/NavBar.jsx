@@ -162,7 +162,7 @@ function NavBar() {
                     </svg>
                     Wishlist</a>
                 <Link to="/contact"><Headset color="#212529" size={16} /> Contact us</Link>
-                <Link to="/blog"><Journal color="#212529" size={16} /> Blog</Link>
+                <Link to="/blog"><Journal color="#212529" size={14} /> Blog</Link>
             </nav>
             <form>
                 <input autoComplete="off" id="trip-search" name="query" placeholder="Search all trips"  />
