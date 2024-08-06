@@ -49,7 +49,7 @@ function DemoPage() {
         onHide={() => setModalShow(false)}
       />
       <CreditCard2Back color="#89bc00" size={96} />
-      <Link to="/">Go to Landing Page</Link>
+      <Link to="/">Landing Page</Link>
         <h1>DEMO PAGE</h1>
         <h2>This is demo GET</h2>
          {data && (
