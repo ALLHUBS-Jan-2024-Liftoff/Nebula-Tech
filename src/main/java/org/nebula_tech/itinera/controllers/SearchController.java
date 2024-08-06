@@ -1,5 +1,6 @@
 package org.nebula_tech.itinera.controllers;
 
+import org.nebula_tech.itinera.data.TripRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,23 +15,23 @@ public class SearchController {
     @Autowired
     private TripRepository tripRepository;
 
-    @RequestMapping("")
-    public String search (Model model) {
-        model.addAttribute("columns", columnChoices);
-        return "search";
-    }
-    @PostMapping("results")
-    public String displaySearchResults(Model model, @RequestParam String searchType, @RequestParam String searchTerm){
-        Iterable<trips> trips;
-        if (searchTerm.toLowerCase().equals("all") || searchTerm.equals("")){
-            trips = TripRepository.findAll();
-        } else {
-            trips = TripData.findByColumnAndValue(searchType, searchTerm, TripRepository.findAll());
-        }
-        model.addAttribute("columns", columnChoices);
-        model.addAttribute("title", "Trips with " + columnChoices.get(searchType) + ": " + searchTerm);
-        model.addAttribute("Trips", trips);
-
-        return "search";
-    }
+//    @RequestMapping("")
+//    public String search (Model model) {
+//        model.addAttribute("columns", columnChoices);
+//        return "search";
+//    }
+//    @PostMapping("results")
+//    public String displaySearchResults(Model model, @RequestParam String searchType, @RequestParam String searchTerm){
+//        Iterable<trips> trips;
+//        if (searchTerm.toLowerCase().equals("all") || searchTerm.equals("")){
+//            trips = TripRepository.findAll();
+//        } else {
+//            trips = TripData.findByColumnAndValue(searchType, searchTerm, TripRepository.findAll());
+//        }
+//        model.addAttribute("columns", columnChoices);
+//        model.addAttribute("title", "Trips with " + columnChoices.get(searchType) + ": " + searchTerm);
+//        model.addAttribute("Trips", trips);
+//
+//        return "search";
+//    }
 }

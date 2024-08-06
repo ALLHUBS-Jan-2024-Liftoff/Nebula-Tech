@@ -1,0 +1,89 @@
+.register-section {
+    display: flex;
+    flex-direction: row; /* Keeps the image and form side by side */
+    margin: 50px 0; /* Adds space between the sections */
+    justify-content: center; /* Centers items horizontally */
+    align-items: flex-start; /* Aligns items to the start vertically */
+}
+
+.register-section-column {
+    width: 50%; /* Sets each column to take up half the width */
+}
+
+.register-section-column:first-child img {
+    width: 100%;
+    object-fit: cover;
+    height: 420px; /* Sets a fixed height for the image */
+}
+
+.register-section-column:last-child {
+    padding: 40px; /* Adjust padding for better fit */
+    background: linear-gradient(180deg, #FDEAA9 0%, #F98E64 100%);
+}
+
+.register-section-column:last-child h1 {
+    font-size: 30px; /* Smaller font size for the header */
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 20px; /* Reduced margin */
+}
+
+.register-form {
+    display: flex;
+    flex-direction: column; /* Keeps the form elements stacked vertically */
+}
+
+.register-form label {
+    margin-bottom: 5px; /* Reduced margin */
+    font-weight: bold;
+    font-size: 14px; /* Smaller font size */
+}
+
+.register-form input {
+    margin-bottom: 15px; /* Reduced margin */
+    padding: 8px; /* Smaller padding */
+    border: 1px solid #001D5D;
+    border-radius: 4px;
+    font-size: 14px; /* Smaller font size */
+}
+
+.register-form button {
+    padding: 8px; /* Smaller padding */
+    font-size: 14px; /* Smaller font size */
+    background-color: #F98E64;
+    color: #191919;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 200ms;
+}
+
+.register-form button:hover {
+    background-color: #FEE7DE;
+    color: #191919;
+    transform: translate(2px);
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 768px) {
+    .register-section {
+        flex-direction: column; /* Stack the columns on small screens */
+        align-items: center; /* Center items horizontally */
+    }
+
+    .register-section-column {
+        width: 100%; /* Full width on small screens */
+        padding: 20px; /* Adjust padding */
+    }
+
+    .register-section-column:last-child h1 {
+        font-size: 24px; /* Smaller font size for mobile */
+    }
+
+    .register-form label,
+    .register-form input,
+    .register-form button {
+        font-size: 12px; /* Smaller font size for mobile */
+        padding: 6px; /* Smaller padding for mobile */
+    }
+}

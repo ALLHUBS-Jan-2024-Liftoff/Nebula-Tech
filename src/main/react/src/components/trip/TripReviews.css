@@ -1,0 +1,134 @@
+.m-trip-reviews-container {
+    max-width: 1208px;
+    width: 100%;
+    margin: 0 auto 60px auto;
+    padding: 0 20px;
+}
+.m-trip-reviews-container section {
+    width: 100%;
+    max-width: 670px;
+}
+.m-trip-reviews-container section h2 {
+    margin-bottom: 8px;
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 36.4px;
+    color: #191919;
+}
+.m-trip-reviews-avg-rating-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 4px;
+}
+.m-trip-reviews-avg-rating-row span {
+    font-size: 48px;
+    font-weight: 700;
+    line-height: 48px;
+    color: #191919;
+    margin-right: 7px;
+}
+.m-trip-reviews-avg-rating-row div {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+}
+.m-trip-reviews-overall-p {
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 24px;
+    margin-bottom: 24px;
+}
+.m-trip-reviews-pagination-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 24px;
+}
+.m-trip-reviews-pagination-header p {
+    margin: 0;
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 300;
+}
+.m-trip-reviews-pagination-header button {
+    display: flex;
+    padding: 0;
+    align-items: center;
+    background: transparent;
+    font-size: 15px;
+    font-weight: 600;
+    border: none;
+    border-radius: 0;
+    text-decoration: underline;
+    text-underline-position: under;
+    text-decoration-thickness: 2px;
+}
+.m-trip-reviews-pagination-header button span {
+    display: block;
+    margin-top: -4px;
+    margin-left: 8px;
+}
+.m-trip-reviews-item {
+    margin-bottom: 24px;
+}
+.m-trip-reviews-title {
+    font-size: 17px;
+    font-weight: 700;
+    color: #191919;
+    margin-bottom: 4px;
+}
+.m-trip-reviews-rating-and-author {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+}
+.m-trip-reviews-rating-and-author div {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    margin-right: 8px;
+}
+.m-trip-reviews-rating-and-author p {
+    margin: 2px 0 0 0;
+    font-size: 14px;
+}
+.m-trip-reviews-body {
+    font-weight: 300;
+}
+.m-trip-reviews-pagination p {
+    text-align: center;
+    font-size: 15px;
+    font-weight: 300;
+    margin-bottom: 10px;
+}
+.m-trip-reviews-pagination div {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+.m-trip-reviews-pagination button {
+    display: flex;
+    padding: 0;
+    align-items: center;
+    background: transparent;
+    font-size: 15px;
+    font-weight: 600;
+    border: none;
+    border-radius: 0;
+    text-decoration: underline;
+    text-underline-position: under;
+    text-decoration-thickness: 2px;
+}
+.m-trip-reviews-pagination button span {
+    display: block;
+    margin-top: -2px;
+}
+.m-trip-reviews-pagination button:first-child {
+    color: #8c8d8e;
+}
+.m-trip-reviews-pagination button:first-child span {
+    margin-left: 7px;
+}
+.m-trip-reviews-pagination button:last-child span {
+    margin-right: 7px;
+}

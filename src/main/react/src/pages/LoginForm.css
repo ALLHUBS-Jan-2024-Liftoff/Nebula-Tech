@@ -1,0 +1,94 @@
+.login-section {
+    display: flex;
+    flex-direction: column; /* Stack header and content vertically */
+}
+
+.login-content {
+    display: flex;
+    flex-direction: row; /* Keep the image and form side by side */
+    justify-content: center; /* Center content */
+    align-items: flex-start; /* Align items to the top */
+    margin: 50px 0; /* Adds space between sections */
+}
+
+.login-section-column {
+    width: 50%; /* Sets each column to take up half the width */
+    padding: 20px; /* Adds padding for spacing */
+}
+
+.login-section-column:first-child img {
+    width: 100%;
+    object-fit: cover;
+    height: 420px; /* Sets a fixed height for the image */
+}
+
+.login-section-column:last-child {
+    background: linear-gradient(180deg, #FDEAA9 0%, #F98E64 100%);
+}
+
+.login-section-column:last-child h1 {
+    font-size: 30px; /* Smaller font size for the header */
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 20px; /* Reduced margin */
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column; /* Keeps the form elements stacked vertically */
+}
+
+.login-form label {
+    margin-bottom: 5px; /* Reduced margin */
+    font-weight: bold;
+    font-size: 14px; /* Smaller font size */
+}
+
+.login-form input {
+    margin-bottom: 15px; /* Reduced margin */
+    padding: 8px; /* Smaller padding */
+    border: 1px solid #001D5D;
+    border-radius: 4px;
+    font-size: 14px; /* Smaller font size */
+}
+
+.login-form button {
+    padding: 8px; /* Smaller padding */
+    font-size: 14px; /* Smaller font size */
+    background-color: #F98E64;
+    color: #191919;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 200ms;
+}
+
+.login-form button:hover {
+    background-color: #FEE7DE;
+    color: #191919;
+    transform: translate(2px);
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 768px) {
+    .login-content {
+        flex-direction: column; /* Stack the columns on small screens */
+        align-items: center; /* Center items horizontally */
+    }
+
+    .login-section-column {
+        width: 100%; /* Full width on small screens */
+        padding: 10px; /* Adjust padding */
+    }
+
+    .login-section-column:last-child h1 {
+        font-size: 24px; /* Smaller font size for mobile */
+    }
+
+    .login-form label,
+    .login-form input,
+    .login-form button {
+        font-size: 12px; /* Smaller font size for mobile */
+        padding: 6px; /* Smaller padding for mobile */
+    }
+}

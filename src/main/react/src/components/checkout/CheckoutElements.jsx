@@ -12,7 +12,9 @@ function CheckoutElements({transactionClientSecret}) {
     const handleSubmit = async (event) => {
       event.preventDefault();
 
-      if (elements == null || stripe == null) { return; }
+      if (elements == null || stripe == null) {
+        return;
+      }
 
       // triggers form validation & wallet collection
       const { error: submitError } = await elements.submit();
@@ -32,8 +34,9 @@ function CheckoutElements({transactionClientSecret}) {
       });
 
       // displays payment confirmation error --> incomplete payment details
-      if (error) { setErrorMessage(error.message); }
-      else {
+      if (error) {
+        setErrorMessage(error.message);
+      } else {
         //  redirects user to authorize payment
         //    then redirects to `return_url` for payment methods like iDEAL
       }

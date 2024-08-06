@@ -11,8 +11,8 @@ function CheckoutStripeForm({ onFormChange, checkoutData }) {
     const [transactionClientSecret, setTransactionClientSecret] = useState('');
 
     useEffect(() => {
-//    calls `loadStripe` outside of component's render
-//      to prevent recreating `Stripe` object on each render
+      //    calls `loadStripe` outside of component's render
+      //      to prevent recreating `Stripe` object on each render
       setStripePromise(loadStripe('pk_test_jW3zmhFPY3tGBhUUk99UwgRv008Lwuldbx'));
     }, []);
 
@@ -26,7 +26,7 @@ function CheckoutStripeForm({ onFormChange, checkoutData }) {
       <>
         <div className="checkout-stripe-form-wrapper">
             <a onClick={() => onFormChange(2)}><ArrowLeft color="#171717" size={20}/><span>Back to personal</span></a>
-            <h2>Enter payment details</h2>
+            <h2>Enter your payment details</h2>
             {transactionClientSecret ? <Elements stripe={stripePromise} options={{clientSecret: transactionClientSecret}} key={transactionClientSecret}>
                 <CheckoutElements transactionClientSecret={transactionClientSecret} />
             </Elements> : null}

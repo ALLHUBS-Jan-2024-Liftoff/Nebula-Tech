@@ -44,7 +44,7 @@ function CheckoutTravelingForm({ onHasGroupChange, onFormChange, checkoutAccount
                 </label>
                 <label htmlFor="has-group-yes-not-booked">
                   <input name="has-group-yes-not-booked" type="radio" value="yes_not_booked" defaultChecked={hasGroup === 'yes_not_booked'} />
-                  <div onClick={() => handleHasGroupChange("yes_not_booked")} className={hasGroup === 'yes_not_booked' ? 'selected' : ''}>Some of my travel companions have not booked their trip</div>
+                  <div onClick={() => handleHasGroupChange("yes_not_booked")} className={hasGroup === 'yes_not_booked' ? 'selected' : ''}>Not all of my travel companions have booked their trip</div>
                 </label>
               </div>
               {validated && !hasGroup ? <span className='checkout-travel-form-error'>Please select an option</span> : null}
