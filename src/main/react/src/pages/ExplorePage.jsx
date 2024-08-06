@@ -9,3 +9,11 @@ import alaskaImg from '../assets/images/alaska.jpg'
 
 function ExplorePage() {
   return (
+  <>
+    <NavBar />
+    <CommonFooter />
+  </>
+  );
+}
+
+export default ExplorePage;

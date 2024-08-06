@@ -8,8 +8,9 @@ import Blog from './components/blog/Blog'
 import TripDetailsPage from './pages/TripDetailsPage'
 import CheckoutPage from './pages/CheckoutPage'
 import CheckoutSuccessPage from './pages/CheckoutSuccessPage'
-import RegisterForm from "./pages/RegisterForm.jsx";
-import LoginForm from "./pages/LoginForm.jsx";
+import RegisterForm from "./pages/RegisterForm.jsx"
+import LoginForm from "./pages/LoginForm.jsx"
+import ExplorePage from "./pages/ExplorePage.jsx"
 import 'bootstrap/dist/css/bootstrap.min.css'
 import './assets/styles/global.css'
 
@@ -49,6 +50,10 @@ const router = createBrowserRouter([
   {
     path: "/register",
     element: <RegisterForm />,
+  },
+  {
+    path: "/explore",
+    element: <ExplorePage />,
   },
 ]);
 
