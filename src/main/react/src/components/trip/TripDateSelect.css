@@ -1,0 +1,95 @@
+.trip-date-select-container {
+    margin-top: 32px;
+    max-width: 468px;
+    width: 100%;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, .15);
+    outline: 2px solid transparent;
+}
+.trip-date-select-header {
+    padding: 24px 16px;
+}
+.trip-date-select-header h2 {
+    margin-bottom: 16px;
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 36.4px;
+    text-align: center;
+    color: #191919;
+}
+.trip-date-select-header button {
+    display: flex;
+    margin-left: auto;
+    padding: 0;
+    align-items: center;
+    background: transparent;
+    font-size: 16px;
+    font-weight: 500;
+    border: none;
+    border-radius: 0;
+    text-decoration: underline;
+    text-underline-position: under;
+    text-decoration-thickness: 2px;
+}
+.trip-date-select-header button span {
+    margin-left: 10px;
+}
+.trip-date-select-body {
+    max-height: 600px;
+    overflow-y: auto;
+    border-radius: inherit;
+}
+.trip-date-select-body table {
+    width: 100%;
+}
+.trip-date-select-body table thead th {
+    padding: 8px 16px;
+    font-size: 16px;
+    font-weight: 600;
+}
+.trip-date-select-body table thead th svg {
+    margin-left: 7px;
+}
+.trip-date-select-body table tbody tr:first-child {
+    background-color: #ebe9e7;
+}
+.trip-date-select-body table tbody th {
+    padding: 8px 16px;
+    font-size: 16px;
+    font-weight: 800;
+    color: #191919;
+}
+.trip-date-select-body table tbody td {
+    padding: 16px;
+    font-weight: 300;
+}
+.trip-date-select-body table tbody td:hover {
+    cursor: pointer;
+}
+.trip-date-select-body table tbody td b {
+    font-weight: 800;
+}
+.trip-date-select-input-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.trip-date-select-circle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px;
+    min-width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    border: 1px solid #8c8d8e;
+}
+.trip-date-select-circle.tdc-selected span {
+    display: block;
+}
+.trip-date-select-circle span {
+    display: none;
+    width: 16px;
+    height: 16px;
+    background-color: #191919;
+    border-radius: 50%;
+}

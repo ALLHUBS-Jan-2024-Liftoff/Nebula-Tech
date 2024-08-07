@@ -1,0 +1,303 @@
+.tour-hero-section {
+    width: 100%;
+    padding: 2px 20px 16px 20px;
+    background-image: linear-gradient(180deg,#fee7de,hsla(17,94%,93%,0));
+}
+.tour-hero-container {
+    max-width: 1168px;
+    width: 100%;
+    margin: 0 auto;
+}
+.tour-hero-breadcrumb-nav {
+    margin: 16px 0;
+}
+.tour-hero-breadcrumb-nav ol {
+    display: inline-block;
+    white-space: nowrap;
+    margin: 0;
+    padding-left: 0;
+}
+.tour-hero-breadcrumb-nav ol li {
+    display: inline-flex;
+    white-space: nowrap;
+    align-items: center;
+    cursor: pointer;
+    position: relative;
+}
+.tour-hero-breadcrumb-nav ol li a {
+    text-decoration: underline;
+    color: #191919;
+    font-size: 14px;
+    line-height: 21px;
+    font-weight: 600;
+    margin: 0 4px;
+}
+.tour-hero-breadcrumb-nav ol li svg {
+    padding: 0 5px;
+}
+.tour-hero-breadcrumb-nav ol li span {
+    text-decoration: none;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    min-width: 8ch;
+    color: #191919;
+    font-size: 14px;
+    line-height: 21px;
+    font-weight: 600;
+    margin: 0 4px;
+}
+.tour-hero-collage {
+    width: 100%;
+    display: grid;
+    gap: 8px;
+    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 32fr 22fr 15fr 31fr;
+    grid:
+    "media1 content content content" 2fr
+    "media1 media2 media3 media4" 2fr / 30fr 20fr 15fr 25fr;
+    height: 550px;
+}
+.tour-hero-collage img {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    object-position: 50% 50%;
+    transition: all 0.3s;
+    overflow: hidden;
+}
+.tour-hero-collage img:hover {
+    cursor: pointer;
+    transform: scale(1.025);
+}
+.tour-hero-collage-media1 {
+    grid-area: media1;
+    position: relative;
+    overflow: hidden;
+    height: 100%;
+}
+.tour-hero-collage-media2 {
+    grid-area: media2;
+    position: relative;
+    overflow: hidden;
+}
+.tour-hero-collage-media3 {
+    grid-area: media3;
+    position: relative;
+    overflow: hidden;
+    justify-items: center;
+    display: grid;
+}
+.tour-hero-collage-media4 {
+    grid-area: media4;
+    position: relative;
+    overflow: hidden;
+}
+.tour-hero-collage-content {
+    grid-area: content;
+    position: relative;
+    padding-top: 32px;
+    padding-left: 32px;
+}
+.tour-hero-collage-content h1 {
+    font-size: 36px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    line-height: 46.8px;
+    color: #191919;
+}
+.tour-hero-collage-content-subtitle {
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 24px;
+    margin-bottom: 30px;
+}
+.tour-hero-collage-content-row {
+    display: flex;
+}
+.tour-hero-summary-info {
+    display: flex;
+    flex-direction: column;
+    margin-right: 32px;
+}
+.tour-hero-summary-info span {
+    display: block;
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 24px;
+    color: #191919;
+    margin-bottom: 5px;
+}
+.tour-hero-summary-info button {
+    font-size: 16px;
+    font-weight: 500;
+    background-color: transparent;
+    border: none;
+    border-radius: 0;
+    padding: 0;
+    position: relative;
+    text-decoration: underline;
+    text-underline-position: under;
+    text-decoration-thickness: 2px;
+}
+.tour-hero-summary-info-review {
+    display: flex;
+}
+.tour-hero-summary-info-stars {
+    margin-right: 5px;
+    display: flex;
+    gap: 2px;
+    align-items: center;
+}
+.tour-hero-summary-info-activity {
+    display: flex;
+    align-items: center;
+}
+.tour-hero-summary-info-activity button {
+    margin-left: 7px;
+}
+.tour-hero-see-dates {
+    border-radius: 0px;
+    border: 2px solid rgba(25, 25, 25, 1);
+    box-shadow: 4px 4px 0px 0px rgba(25, 25, 25, 1);
+    height: 48px;
+    position: relative;
+    bottom: 5px;
+    cursor: pointer;
+    display: block;
+    font-weight: 500;
+    outline: none;
+    -webkit-text-decoration: none;
+    text-decoration: none;
+    background: #fff;
+    color: #191919;
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 24px;
+    margin-right: 22px;
+    padding: 10px 25px;
+    -webkit-transition: all 200ms;
+    transition: all 200ms;
+    white-space: nowrap;
+}
+.tour-hero-see-dates:hover {
+    background-color: #fff;
+    border-color: #191919;
+    color: #191919;
+    box-shadow: 0px 0px 0px 0px rgba(25, 25, 25, 1);
+    -webkit-transform: translate3d(4px, 4px, 0);
+    -moz-transform: translate3d(4px, 4px, 0);
+    -ms-transform: translate3d(4px, 4px, 0);
+    transform: translate3d(4px, 4px, 0);
+}
+.tour-hero-circle-btns {
+    display: flex;
+    gap: 15px;
+}
+.tour-hero-circle-btns button {
+    border-radius: 100%;
+    stroke-width: 1.5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    min-width: 48px;
+    height: 48px;
+    transition: background-color 0.3s;
+    border-style: solid;
+    border-width: 2px;
+    border-color: #191919;
+    background-color: transparent;
+    color: #191919;
+    cursor: pointer;
+}
+.tour-hero-circle-btns button:hover {
+    background-color: #191919;
+}
+.tour-hero-circle-btns button:hover svg {
+    filter: invert(100%);
+}
+.tour-hero-circle-btns button:last-child {
+    display: none;
+}
+@media screen and (min-width: 1100px) {
+    .tour-hero-circle-btns button:last-child { display: flex; }
+}
+.tour-hero-see-all {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    z-index: 2;
+    width: 98px;
+    height: 40px;
+    bottom: 16px;
+    right: 16px;
+    font-size: 14px;
+    font-weight: 500;
+    background-color: #fff;
+    border-color: transparent;
+    color: #191919;
+    cursor: pointer;
+    text-decoration: none;
+}
+.tour-hero-modal .modal-content {
+    border-radius: 0;
+}
+.tour-hero-modal .modal-body {
+    padding: 32px;
+}
+.tour-hero-modal button {
+    margin-left: auto;
+    display: flex;
+    padding: 0;
+    align-items: center;
+    background: transparent;
+    font-size: 15px;
+    font-weight: 500;
+    border: none;
+    border-radius: 0;
+    position: relative;
+    text-decoration: underline;
+    text-underline-position: under;
+    text-decoration-thickness: 2px;
+}
+.tour-hero-modal .modal-body h4 {
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    font-size: 28px;
+    font-weight: 700;
+    color: #191919;
+}
+.tour-hero-modal .modal-body h4 svg {
+    margin-right: 10px;
+}
+.tour-hero-modal .modal-body p {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 300;
+}
+.tour-hero-modal-img-wrapper {
+    max-width: 1200px;
+    width: 100%;
+    max-height: 800px;
+    height: 100%;
+    padding: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+}
+.tour-hero-modal-img--horizontal {
+    width: 100%;
+}
+.tour-hero-modal-img--vertical {
+    height: 100%;
+}

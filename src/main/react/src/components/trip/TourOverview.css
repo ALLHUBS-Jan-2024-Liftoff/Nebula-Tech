@@ -1,0 +1,46 @@
+.tour-overview-container {
+    max-width: 1208px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+}
+.tour-overview-container section {
+    width: 100%;
+    padding-top: 24px;
+    padding-right: 30px;
+    padding-bottom: 60px;
+}
+.tour-overview-container section h2 {
+    margin-bottom: 8px;
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 36.4px;
+    color: #191919;
+}
+.tour-overview-container section p {
+    margin-bottom: 30px;
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 24px;
+}
+.tour-overview-container section h3 {
+    font-size: 16px;
+    font-weight: 700;
+    color: #191919;
+    margin-bottom: 20px;
+}
+.tour-overview-row {
+    display: flex;
+    gap: 32px;
+}
+.tour-overview-container section ul {
+    padding-left: 16px;
+}
+.tour-overview-container section ul li {
+    font-size: 15px;
+    font-weight: 300;
+    line-height: 24px;
+    margin-bottom: 7px;
+    color: #191919;
+}

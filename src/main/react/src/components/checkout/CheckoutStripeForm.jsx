@@ -11,8 +11,8 @@ function CheckoutStripeForm({ onFormChange, checkoutData }) {
     const [transactionClientSecret, setTransactionClientSecret] = useState('');
 
     useEffect(() => {
-//    calls `loadStripe` outside of component's render
-//      to prevent recreating `Stripe` object on each render
+      //    calls `loadStripe` outside of component's render
+      //      to prevent recreating `Stripe` object on each render
       setStripePromise(loadStripe('pk_test_jW3zmhFPY3tGBhUUk99UwgRv008Lwuldbx'));
     }, []);
 

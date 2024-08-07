@@ -80,7 +80,7 @@ function CheckoutPersonalForm({ onPersonalChange, onFormChange, checkoutAccount 
         if (/^(?:(?:31(\/|-|\.)(?:0?[13578]|1[02]))\1|(?:(?:29|30)(\/|-|\.)(?:0?[13-9]|1[0-2])\2))(?:(?:1[6-9]|[2-9]\d)?\d{2})$|^(?:29(\/|-|\.)0?2\3(?:(?:(?:1[6-9]|[2-9]\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?[1-9]|1\d|2[0-8])(\/|-|\.)(?:(?:0?[1-9])|(?:1[0-2]))\4(?:(?:1[6-9]|[2-9]\d)?\d{2})$/.test(dateOfBirth)) {
             setDateOfBirthErr("");
         } else {
-            setDateOfBirthErr("Valid date of birth required");
+            setDateOfBirthErr("Valid date of birth");
             errors = true;
         }
         if (phone) {
@@ -113,18 +113,18 @@ function CheckoutPersonalForm({ onPersonalChange, onFormChange, checkoutAccount 
         <div className="checkout-personal-form-wrapper">
             <a onClick={() => onFormChange(1)}><ArrowLeft color="#171717" size={20}/><span>Return to Trip Group</span></a>
             <h2>Provide personal information</h2>
-            <p className='checkout-personal-form-subtitle'>Enter your passport details:</p>
+            <p className='checkout-personal-form-subtitle'>Enter passport details:</p>
             <Form noValidate validated={validated} onSubmit={handleSubmit}>
                 <Row>
                     <Form.Group as={Col} md="12">
-                        <Form.Label>First Name <Asterisk color="#171717" size={6}/></Form.Label>
+                        <Form.Label>First Name<Asterisk color="#171717" size={6}/></Form.Label>
                         <Form.Control required type="text" placeholder="" value={firstName} onChange={handleFirstNameChange} />
                         <Form.Control.Feedback type="invalid">Field required</Form.Control.Feedback>
                     </Form.Group>
                 </Row>
                 <Row>
                     <Form.Group as={Col} md="12">
-                        <Form.Label>Last Name <Asterisk color="#171717" size={6}/></Form.Label>
+                        <Form.Label>Last Name<Asterisk color="#171717" size={6}/></Form.Label>
                         <Form.Control required type="text" placeholder="" value={lastName} onChange={handleLastNameChange} />
                         <Form.Control.Feedback type="invalid">Field required</Form.Control.Feedback>
                     </Form.Group>
@@ -153,7 +153,7 @@ function CheckoutPersonalForm({ onPersonalChange, onFormChange, checkoutAccount 
                 </Row>
                 <Row>
                     <Form.Group as={Col} md="12">
-                        <Form.Label>Date of birth <Asterisk color="#171717" size={6}/></Form.Label>
+                        <Form.Label>Date of Birth <Asterisk color="#171717" size={6}/></Form.Label>
                         <InputMask className={`checkout-personal-form-mask-input ${dateOfBirthErr ? 'is-invalid' : ''} ${!dateOfBirthErr && validated ? 'valid' : ''}`}
                             mask="39/19/2999" placeholder="DD/MM/YYYY"
                             value={dateOfBirth} onChange={handleDateOfBirthChange}
