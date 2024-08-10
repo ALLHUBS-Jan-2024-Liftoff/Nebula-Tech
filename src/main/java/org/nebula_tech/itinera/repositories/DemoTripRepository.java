@@ -1,4 +1,4 @@
-package org.nebula_tech.itinera.repository;
+package org.nebula_tech.itinera.repositories;
 
 import org.nebula_tech.itinera.models.DemoTrip;
 import org.springframework.data.domain.Pageable;

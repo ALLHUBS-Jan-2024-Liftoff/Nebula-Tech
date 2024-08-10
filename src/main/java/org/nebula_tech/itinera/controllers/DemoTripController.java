@@ -2,7 +2,7 @@ package org.nebula_tech.itinera.controllers;
 
 import org.nebula_tech.itinera.models.DemoTrip;
 import org.nebula_tech.itinera.models.DemoTripDatePrice;
-import org.nebula_tech.itinera.repository.DemoTripRepository;
+import org.nebula_tech.itinera.repositories.DemoTripRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
