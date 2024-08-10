@@ -1,5 +1,5 @@
 import Modal from 'react-bootstrap/Modal';
-import { X } from 'react-bootstrap-icons'
+import { X } from 'react-bootstrap-icons';
 
 function TourHeroModal(props) {
   return (

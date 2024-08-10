@@ -1,11 +1,21 @@
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import { Headset, Search, Journal } from 'react-bootstrap-icons'
+import axios from 'axios'
+import { X, Headset, Search, Journal } from 'react-bootstrap-icons'
+import Spinner from 'react-bootstrap/Spinner'
 import itineraLogo from '../../assets/images/itinera-logo.jpg'
+import searchImg1 from '../../assets/images/search-img1.jpg'
+import searchImg2 from '../../assets/images/search-img2.jpg'
+import searchImg3 from '../../assets/images/search-img3.jpg'
 import "./NavBar.css";
 
 function NavBar() {
     const [navPanel, setNavPanel] = useState(false);
+    const [searchTerm, setSearchTerm] = useState("");
+    const [searchResults, setSearchResults] = useState([]);
+    const [loading, setLoading] = useState(false);
+    const searchImgs = [searchImg1, searchImg2, searchImg3];
+
     const handleButtonClick = (e) => {
         e.preventDefault();
         setNavPanel(!navPanel);
@@ -18,12 +28,35 @@ function NavBar() {
             setNavPanel(false);
         }
     }
+    const searchPanelClickOutside = (event) => {
+        if (event.target.id.includes("secondary-nav-trip-search")) {
+            return
+        }
+        if (!event.target.closest('.secondary-nav-search-dropdown')) {
+            setSearchTerm("");
+        }
+    }
+
+    const handleSearchInputChange = (e) => {
+        setSearchTerm(e.target.value);
+        if (e.target.value.trim()) {
+            setLoading(true);
+            axios.get('/api/public/search-demo-trips?query=' + e.target.value.trim())
+                .then(response => { setSearchResults(response.data); })
+                .catch(error => { alert(JSON.stringify(error)); })
+                .finally(() => { setLoading(false); });
+        }
+    };
     useEffect(() => {
         document.addEventListener('click', mainNavPanelClickOutside);
+        document.addEventListener('click', searchPanelClickOutside);
         return () => {
             document.removeEventListener('click', mainNavPanelClickOutside);
+            document.removeEventListener('click', searchPanelClickOutside);
         };
     }, []);
+
+    
 
     return (
     <>
@@ -164,9 +197,36 @@ function NavBar() {
                 <Link to="/contact"><Headset color="#212529" size={16} /> Contact us</Link>
                 <Link to="/blog"><Journal color="#212529" size={14} /> Blog</Link>
             </nav>
-            <form>
-                <input autoComplete="off" id="trip-search" name="query" placeholder="Search all trips"  />
-                <button type="submit"><Search color="#212529" size={20}/></button>          
+            <form className='position-relative'>
+                <input autoComplete="off" id="secondary-nav-trip-search" onChange={handleSearchInputChange} name="query" placeholder="Search all trips" value={searchTerm} />
+                <button className="secondary-nav-submit-btn" type="submit" disabled>
+                    {!loading ? <Search color="#212529" size={20}/> :
+                        <Spinner animation="border" role="status" variant="dark" style={{ width: "24px", height: "24px" }}>
+                            <span className="visually-hidden">Loading...</span>
+                        </Spinner>
+                    }
+                </button>
+                {searchResults.length && searchTerm ? <div className='secondary-nav-search-dropdown'>
+                    <button onClick={() => setSearchTerm('')} type="button">
+                        Close&nbsp;<X color="#191919" size={26} />
+                    </button>
+                    <div className='secondary-nav-search-dropdown-title'>Our best sellers</div>
+                    <ul>
+                        {searchResults.map((trip, index) => {
+                            return (
+                                <li key={'trip-key' + trip.tripId}>
+                                    <Link to={'/trip/' + trip.tripId} reloadDocument>
+                                        <img src={searchImgs[index]} alt={'trip' + index} />
+                                        <div>
+                                            <h4>{trip.title}</h4>
+                                            <p>{7 * (index + 1)} days</p>
+                                        </div>
+                                    </Link>
+                                </li>
+                            )
+                        })}
+                    </ul>
+                </div> : null} 
             </form>
         </div>
       </div>
