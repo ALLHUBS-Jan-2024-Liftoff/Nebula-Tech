@@ -1,6 +1,6 @@
 package org.nebula_tech.itinera.controllers;
 
-import org.nebula_tech.itinera.data.TripRepository;
+import org.nebula_tech.itinera.repositories.TripRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
