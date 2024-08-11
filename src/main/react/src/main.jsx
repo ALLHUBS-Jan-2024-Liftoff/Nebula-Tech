@@ -11,6 +11,7 @@ import CheckoutSuccessPage from './pages/CheckoutSuccessPage'
 import RegisterForm from "./pages/RegisterForm.jsx"
 import LoginForm from "./pages/LoginForm.jsx"
 import ExplorePage from "./pages/ExplorePage.jsx"
+import UserDashboard from "./pages/UserDashboard.jsx"
 import 'bootstrap/dist/css/bootstrap.min.css'
 import './assets/styles/global.css'
 const router = createBrowserRouter([
@@ -49,6 +50,10 @@ const router = createBrowserRouter([
   {
     path: "/register",
     element: <RegisterForm />,
+  },
+  {
+      path: "/dashboard",
+      element: <UserDashboard />,
   },
   {
     path: "/explore",
