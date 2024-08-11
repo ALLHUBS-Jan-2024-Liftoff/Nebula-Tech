@@ -1,4 +1,4 @@
-package org.nebula_tech.itinera.data;
+package org.nebula_tech.itinera.repositories;
 import org.nebula_tech.itinera.models.User;
 import org.springframework.data.repository.CrudRepository;
 

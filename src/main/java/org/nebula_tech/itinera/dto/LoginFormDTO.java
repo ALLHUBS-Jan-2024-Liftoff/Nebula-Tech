@@ -1,4 +1,4 @@
-package org.nebula_tech.itinera.data;
+package org.nebula_tech.itinera.dto;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
