@@ -26,6 +26,7 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-validation'
 	implementation 'com.stripe:stripe-java:26.4.0'
 	implementation 'com.google.code.gson:gson:2.11.0'
+//	implementation 'org.postgresql:postgresql:42.7.3' 	// LIVE DB PLUGIN --> PLEASE DO NOT TOUCH
 	runtimeOnly 'com.mysql:mysql-connector-j'
 	testImplementation 'org.springframework.security:spring-security-test'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
