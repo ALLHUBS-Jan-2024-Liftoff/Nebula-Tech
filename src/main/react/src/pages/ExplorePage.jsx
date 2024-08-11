@@ -6,11 +6,18 @@ import sicilyImg from '../assets/images/sicily.jpg'
 import indiaImg from '../assets/images/india.jpg'
 import mexicoImg from '../assets/images/mexico.jpg'
 import alaskaImg from '../assets/images/alaska.jpg'
+import Header from '../components/explore/Header'
+import ExploreGrid from '../components/explore/ExploreGrid'
+
 
 function ExplorePage() {
   return (
   <>
     <NavBar />
+    <main />
+    <Header/>
+    <ExploreGrid/>
+    <main />
     <CommonFooter />
   </>
   );
