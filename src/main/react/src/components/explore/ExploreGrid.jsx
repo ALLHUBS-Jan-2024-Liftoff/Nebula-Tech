@@ -1,46 +1,79 @@
-import Card from 'react-bootstrap/Card';
-import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import ExploreCard from './ExploreCard';
+import './ExploreGrid.css'
+
 
 function ExploreGrid() {
   const cards = [
     {
+      id: 1,
       title: 'Card 1',
       text: 'This is card 1',
       image: 'holder.js/100px160',
-      width: '20rem',
-      height: '30rem',
-      padding: '20px',
     },
     {
+      id: 2,
       title: 'Card 2',
       text: 'This is card 2',
       image: 'holder.js/100px160',
-      width: '25rem',
-      height: '35rem',
-      padding: '30px',
     },
-    // Add more cards here...
-  ];
-  return (
-    <Row xs={1} md={3} className="g-4">
-      {Array.from({ length: 6 }).map((_, idx) => (
-        <Col key={idx}>
-          <Card>
-            <Card.Img variant="top" src="holder.js/100px160" />
-            <Card.Body>
-              <Card.Title>Card title</Card.Title>
-              <Card.Text>
-                This is a longer card with supporting text below as a natural
-                lead-in to additional content. This content is a little bit
-                longer.
-              </Card.Text>
-            </Card.Body>
-          </Card>
-        </Col>
-      ))}
-    </Row>
-  );
-}
+    {
+    id: 3,
+    title: 'Card 3',
+    text: 'This is card 3',
+    image: 'holder.js/100px160',
+    },
+    {
+    id: 4,
+    title: 'Card 4',
+    text: 'This is card 4',
+    image: 'holder.js/100px160',
+    },
+    {
+    id: 5,
+    title: 'Card 5',
+    text: 'This is card 5',
+    image: 'holder.js/100px160',
+    },
+    {
+    id: 6,
+    title: 'Card 6',
+    text: 'This is card 6',
+    image: 'holder.js/100px160',
+    },
+    {
+    id: 7,
+    title: 'Card 7',
+    text: 'This is card 7',
+    image: 'holder.js/100px160',
+    },
+    {
+    id: 8,
+    title: 'Card 8',
+    text: 'This is card 8',
+    image: 'holder.js/100px160',
+    },
+    {
+    id: 9,
+    title: 'Card 9',
+    text: 'This is card 9',
+    image: 'holder.js/100px160',
+    },
 
-export default ExploreGrid;
+  ];
+
+  return (
+      <div className="card-grid-container">
+        <Row xs={1} md={3} className="g-4">
+          {cards.map((card, idx) => (
+              <Col key={idx}>
+                <ExploreCard title={card.title} text={card.text} image={card.image}/>
+              </Col>
+          ))}
+        </Row>
+      </div>
+        );
+        }
+
+        export default ExploreGrid;
