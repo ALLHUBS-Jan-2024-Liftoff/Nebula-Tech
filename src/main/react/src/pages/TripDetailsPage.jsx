@@ -1,4 +1,6 @@
-import { useEffect } from 'react'
+import { useState, useEffect } from 'react'
+import { useParams } from 'react-router-dom';
+import axios from 'axios'
 import NavBar from '../components/common/NavBar'
 import CommonFooter from '../components/common/CommonFooter'
 import TourHero from '../components/trip/TourHero'
@@ -9,17 +11,26 @@ import TravelerPhotos from '../components/trip/TravelerPhotos'
 import TripReviews from '../components/trip/TripReviews'
 
 function TripDetailsPage() {
-    useEffect(() => {
-        window.scrollTo({ top: 0, left: 0, behavior: "instant" });
-    }, []);
+  const { id } = useParams();
+  const [tripDetails, setTripDetails] = useState({dates: []});
+
+  useEffect(() => {
+      window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+  }, []);
+
+  useEffect(() => {
+      axios.get('/api/public/demo-trips/' + ("12345".includes(id) ? id : "1"))
+        .then(response => { setTripDetails(response.data) })
+        .catch(error => { alert(JSON.stringify(error)); });
+  }, []);
 
   return (
     <>
       <NavBar />
       <main>
-        <TourHero />
+        <TourHero trip={tripDetails} />
         <TourNav />
-        <TourOverview />
+        <TourOverview trip={tripDetails} />
         <TourItinerary />
         <TravelerPhotos />
         <TripReviews />

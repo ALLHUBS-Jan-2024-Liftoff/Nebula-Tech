@@ -9,7 +9,7 @@ import LandImg from '../../assets/images/australia-land.jpg'
 import CityImg from '../../assets/images/australia-city.jpg'
 import'./TourHero.css'
 
-function TourHero() {
+function TourHero({ trip }) {
     const [modalShow, setModalShow] = useState(false);
     const [modalType, setModalType] = useState("");
     const [modalImgShow, setModalImgShow] = useState(false);
@@ -22,6 +22,11 @@ function TourHero() {
         setModalImgShow(true);
         setModalImgType(modalType);
     }
+    const scrollToSection = (e, id) => {
+        e.preventDefault();
+        const top = document.getElementById(id).offsetTop - 70;
+        window.scrollTo({ top, behavior: 'smooth' });
+    };
   return (
     <>
         <section className='tour-hero-section'>
@@ -35,7 +40,7 @@ function TourHero() {
                             </svg>
                         </li>
                         <li>
-                            <span>Australia & New Zealand Adventure</span>
+                            <span>{trip?.title}</span>
                         </li>
                     </ol>
                 </nav>
@@ -63,7 +68,7 @@ function TourHero() {
                         <button className='tour-hero-see-all' type='button'>See all (17)</button>
                     </div>
                     <div className='tour-hero-collage-content'>
-                        <h1>Australia & New Zealand Adventure</h1>
+                        <h1>{trip?.title}</h1>
                         <p className="tour-hero-collage-content-subtitle">21 days,&nbsp;9 cities&nbsp;&nbsp;|&nbsp;&nbsp;From $5,029 before flights&nbsp;&nbsp;|&nbsp;&nbsp;Payments as low as&nbsp;$186.26</p>
                         <div className='tour-hero-collage-content-row'>
                             <div className='tour-hero-summary-info'>
@@ -80,7 +85,7 @@ function TourHero() {
                                         <StarFill color="#191919" size={14} />
                                         <StarFill color="#191919" size={14} />
                                     </div>
-                                    <button type='button'>83</button>
+                                    <button onClick={(e) => scrollToSection(e, 'm-trip-reviews-section')} type='button'>83</button>
                                 </div>
                             </div>
                             <div className='tour-hero-summary-info'>
@@ -92,7 +97,7 @@ function TourHero() {
                                     <button onClick={() => openTripHeroModal('activity-level')} type='button'>Moderate</button>
                                 </div>
                             </div>
-                            <a href="#" className='tour-hero-see-dates'>See dates & prices</a>
+                            <a href="#" onClick={(e) => scrollToSection(e, 'tour-overview-section')} className='tour-hero-see-dates'>See dates & prices</a>
                             <div className='tour-hero-circle-btns'>
                                 <button type='button'>
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="#191919" height="20px">

@@ -2,7 +2,7 @@
 import TripDateSelect from './TripDateSelect'
 import "./TourOverview.css";
 
-function TourOverview() {
+function TourOverview({ trip }) {
     return (
     <>
         <div className="tour-overview-container">
@@ -73,7 +73,7 @@ function TourOverview() {
                     </div>
                 </div>
             </section>
-            <TripDateSelect />
+            <TripDateSelect trip={trip} />
         </div>
     </>
   );

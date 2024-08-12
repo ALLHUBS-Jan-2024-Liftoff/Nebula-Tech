@@ -83,13 +83,3 @@
     border-radius: 50%;
     border: 1px solid #8c8d8e;
 }
-.trip-date-select-circle.tdc-selected span {
-    display: block;
-}
-.trip-date-select-circle span {
-    display: none;
-    width: 16px;
-    height: 16px;
-    background-color: #191919;
-    border-radius: 50%;
-}
