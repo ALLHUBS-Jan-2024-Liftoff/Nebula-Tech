@@ -52,7 +52,7 @@ function LandingPage() {
           <div className='landing-new-trips-container'>
             <h2>New trips</h2>
             <div className='landing-new-trips-row'>
-              <Link to="/trip/sicily" className='landing-new-trips-col'>
+              <Link to="/trip/2" className='landing-new-trips-col'>
                 <div className='landing-new-trips-img'>
                   <img src={sicilyImg} alt="sicily" />
                 </div>
@@ -61,7 +61,7 @@ function LandingPage() {
                   <p>10 days, 3 cities</p>
                 </div>
               </Link>
-              <Link to="/trip/india" className='landing-new-trips-col'>
+              <Link to="/trip/3" className='landing-new-trips-col'>
                 <div className='landing-new-trips-img'>
                   <img src={indiaImg} alt="india" />
                 </div>
@@ -70,7 +70,7 @@ function LandingPage() {
                   <p>9 days, 4 cities</p>
                 </div>
               </Link>
-              <Link to="/trip/mexico" className='landing-new-trips-col'>
+              <Link to="/trip/4" className='landing-new-trips-col'>
                 <div className='landing-new-trips-img'>
                   <img src={mexicoImg} alt="mexico" />
                 </div>
@@ -79,7 +79,7 @@ function LandingPage() {
                   <p>7 days, 1 city</p>
                 </div>
               </Link>
-              <Link to="/trip/alaska" className='landing-new-trips-col'>
+              <Link to="/trip/5" className='landing-new-trips-col'>
                 <div className='landing-new-trips-img'>
                   <img src={alaskaImg} alt="alaska" />
                 </div>

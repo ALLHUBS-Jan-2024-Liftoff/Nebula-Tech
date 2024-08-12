@@ -6,6 +6,7 @@ import org.nebula_tech.itinera.repositories.DemoTripRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.*;
@@ -171,5 +172,10 @@ public class DemoTripController {
     public List<DemoTrip> searchDemoTrips(@RequestParam(name="query") String query) {
         Pageable pageable = PageRequest.of(0, 3);
         return demoTripRepository.searchByTitleOrCountry(query.toLowerCase(), pageable);
+    }
+
+    @GetMapping("/demo-trips/{id}")
+    public ResponseEntity<DemoTrip> getDemoTripById(@PathVariable Long id) {
+        return demoTripRepository.findById(id).map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
 }

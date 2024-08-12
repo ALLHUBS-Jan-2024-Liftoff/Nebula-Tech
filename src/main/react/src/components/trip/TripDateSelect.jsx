@@ -1,9 +1,16 @@
-import { useState } from 'react'
+import React from 'react'
+import { useNavigate } from 'react-router-dom';
 import { Sliders2Vertical, InfoCircle } from 'react-bootstrap-icons'
 import "./TripDateSelect.css";
 
-function TripDateSelect() {
-    const [selectedDate, setSelectedDate] = useState(null);
+function TripDateSelect({ trip }) {
+    const navigate = useNavigate();
+
+    const handleDateSelect = (year, range, dateIndex) => {
+        sessionStorage.setItem('itineraCheckout', JSON.stringify({ year, range, dateIndex, tripId: trip.tripId }));
+        navigate('/checkout');
+    }
+
     return (
     <>
         <div className="trip-date-select-container">
@@ -26,140 +33,30 @@ function TripDateSelect() {
                             </th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr>
-                            <th colSpan="3">
-                                <span>2024</span>
-                            </th>
-                        </tr>
-                        <tr onClick={() => setSelectedDate(0)}>
-                            <td>
-                                <div className='trip-date-select-input-row'>
-                                    <div className={`trip-date-select-circle ${selectedDate === 0 ? 'tdc-selected' : ''}`}>
-                                        <span></span>
-                                    </div>
-                                    <span><b>Nov 1 - Nov 21</b></span>
-                                </div>
-                            </td>
-                            <td><span>Essential</span></td>
-                            <td><span>$4629</span></td>
-                        </tr>
-                        <tr onClick={() => setSelectedDate(1)}>
-                            <td>
-                                <div className='trip-date-select-input-row'>
-                                    <div className={`trip-date-select-circle ${selectedDate === 1 ? 'tdc-selected' : ''}`}>
-                                        <span></span>
-                                    </div>
-                                    <span><b>Nov 8 - Nov 28</b></span>
-                                </div>
-                            </td>
-                            <td><span>Essential</span></td>
-                            <td><span>$4229</span></td>
-                        </tr>
-                        <tr onClick={() => setSelectedDate(2)}>
-                            <td>
-                                <div className='trip-date-select-input-row'>
-                                    <div className={`trip-date-select-circle ${selectedDate === 2 ? 'tdc-selected' : ''}`}>
-                                        <span></span>
-                                    </div>
-                                    <span><b>Dec 27 - Jan 16</b></span>
-                                </div>
-                            </td>
-                            <td><span>Essential</span></td>
-                            <td><span>$6429</span></td>
-                        </tr>
-                    </tbody>
-                    <tbody>
-                        <tr>
-                            <th colSpan="3">
-                                <span>2025</span>
-                            </th>
-                        </tr>
-                        <tr onClick={() => setSelectedDate(3)}>
-                            <td>
-                                <div className='trip-date-select-input-row'>
-                                    <div className={`trip-date-select-circle ${selectedDate === 3 ? 'tdc-selected' : ''}`}>
-                                        <span></span>
-                                    </div>
-                                    <span><b>May 9 - May 29</b></span>
-                                </div>
-                            </td>
-                            <td><span>Essential</span></td>
-                            <td><span>$4629</span></td>
-                        </tr>
-                        <tr onClick={() => setSelectedDate(4)}>
-                            <td>
-                                <div className='trip-date-select-input-row'>
-                                    <div className={`trip-date-select-circle ${selectedDate === 4 ? 'tdc-selected' : ''}`}>
-                                        <span></span>
-                                    </div>
-                                    <span><b>May 23 - Jun 12</b></span>
-                                </div>
-                            </td>
-                            <td><span>Essential</span></td>
-                            <td><span>$4629</span></td>
-                        </tr>
-                        <tr onClick={() => setSelectedDate(5)}>
-                            <td>
-                                <div className='trip-date-select-input-row'>
-                                    <div className={`trip-date-select-circle ${selectedDate === 5 ? 'tdc-selected' : ''}`}>
-                                        <span></span>
-                                    </div>
-                                    <span><b>Jun 27 - Jul 17</b></span>
-                                </div>
-                            </td>
-                            <td><span>Essential</span></td>
-                            <td><span>$4629</span></td>
-                        </tr>
-                        <tr onClick={() => setSelectedDate(6)}>
-                            <td>
-                                <div className='trip-date-select-input-row'>
-                                    <div className={`trip-date-select-circle ${selectedDate === 6 ? 'tdc-selected' : ''}`}>
-                                        <span></span>
-                                    </div>
-                                    <span><b>Jul 18 - Aug 7</b></span>
-                                </div>
-                            </td>
-                            <td><span>Essential</span></td>
-                            <td><span>$4629</span></td>
-                        </tr>
-                        <tr onClick={() => setSelectedDate(7)}>
-                            <td>
-                                <div className='trip-date-select-input-row'>
-                                    <div className={`trip-date-select-circle ${selectedDate === 7 ? 'tdc-selected' : ''}`}>
-                                        <span></span>
-                                    </div>
-                                    <span><b>Sep 12 - Oct 2</b></span>
-                                </div>
-                            </td>
-                            <td><span>Essential</span></td>
-                            <td><span>$4629</span></td>
-                        </tr>
-                        <tr onClick={() => setSelectedDate(8)}>
-                            <td>
-                                <div className='trip-date-select-input-row'>
-                                    <div className={`trip-date-select-circle ${selectedDate === 8 ? 'tdc-selected' : ''}`}>
-                                        <span></span>
-                                    </div>
-                                    <span><b>Nov 7 - Nov 27</b></span>
-                                </div>
-                            </td>
-                            <td><span>Essential</span></td>
-                            <td><span>$4629</span></td>
-                        </tr>
-                        <tr onClick={() => setSelectedDate(9)}>
-                            <td>
-                                <div className='trip-date-select-input-row'>
-                                    <div className={`trip-date-select-circle ${selectedDate === 9 ? 'tdc-selected' : ''}`}>
-                                        <span></span>
-                                    </div>
-                                    <span><b>Dec 27 - Jan 16</b></span>
-                                </div>
-                            </td>
-                            <td><span>Essential</span></td>
-                            <td><span>$4629</span></td>
-                        </tr>
-                    </tbody>
+                    {
+                    Object.keys(trip?.dates).map((year, index) => (
+                        <React.Fragment key={index}>
+                            <tbody>
+                                <tr>
+                                    <th colSpan="3">
+                                        <span>{year}</span>
+                                    </th>
+                                </tr>
+                                {trip?.dates[year].map((date, dateIndex) => (
+                                    <tr onClick={() => handleDateSelect(year, date.date, dateIndex)} key={'date' + dateIndex}>
+                                        <td>
+                                            <div className='trip-date-select-input-row'>
+                                                <div className="trip-date-select-circle"></div>
+                                                <span><b>{date.date}</b></span>
+                                            </div>
+                                        </td>
+                                        <td><span>{date.type}</span></td>
+                                        <td><span>{'$' + (date.price / 100)}</span></td>
+                                    </tr>
+                                 ))}
+                            </tbody>
+                        </React.Fragment>
+                    ))}
                 </table>
             </div>
         </div>
