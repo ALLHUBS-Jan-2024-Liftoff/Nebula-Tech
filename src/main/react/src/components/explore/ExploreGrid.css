@@ -1,0 +1,48 @@
+.card-grid-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 20px;
+    margin-left: 7%;
+}
+
+.card-grid-container .card {
+    margin: 10px; /* Add some margin to separate cards */
+}
+
+.custom-button {
+    background-color: #f98e64;
+    border-color: #f98e64;
+}
+
+.dropdown-menu {
+    border-radius: 0;
+    color: #FFFFFF;
+    height: auto;
+}
+
+.dropdown-toggle {
+    border-radius: 0;
+    border-bottom: 2px outset #e2e2e2;
+    border-top: 2px solid white;
+    border-left: 2px solid white;
+    border-right: 1px solid black;
+    color: #000000;
+    background-color: #ffffff;
+}
+
+.dropdown-toggle:hover {
+    color: #000000;
+    background-color: #ffffff;
+    border-bottom: 2px outset #e2e2e2;
+    border-radius: 0;
+    border-top: 2px solid white;
+    border-left: 2px solid white;
+    border-right: 1px solid black;
+}
+
+.dropdown-toggle:focus {
+    background-color: #F98E64FF; /* Change background color to dark gray on focus */
+    color: #ffffff;
+    box-shadow: none; /* Remove box shadow on focus */
+}

@@ -8,6 +8,7 @@ import mexicoImg from '../assets/images/mexico.jpg'
 import alaskaImg from '../assets/images/alaska.jpg'
 import Header from '../components/explore/Header'
 import ExploreGrid from '../components/explore/ExploreGrid'
+import ExploreDropdown from '../components/explore/ExploreDropdown.jsx'
 
 
 function ExplorePage() {
@@ -15,8 +16,9 @@ function ExplorePage() {
   <>
     <NavBar />
     <main />
-    <Header/>
-    <ExploreGrid/>
+    <Header />
+    <ExploreDropdown />
+    <ExploreGrid />
     <main />
     <CommonFooter />
   </>
