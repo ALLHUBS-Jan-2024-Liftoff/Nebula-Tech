@@ -3,7 +3,7 @@ package org.nebula_tech.itinera.controllers;
 import jakarta.validation.Valid;
 import org.nebula_tech.itinera.dto.LoginFormDTO;
 import org.springframework.http.ResponseEntity;
-import org.springframework.ui.Model;
+
 import jakarta.servlet.http.HttpSession;
 import org.nebula_tech.itinera.dto.RegisterFormDTO;
 import org.nebula_tech.itinera.repositories.UserRepository;
