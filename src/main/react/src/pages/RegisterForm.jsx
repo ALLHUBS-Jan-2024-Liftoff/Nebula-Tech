@@ -23,7 +23,7 @@ const RegisterForm = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post('/api/register', formData);
+            const response = await axios.post('/api/public/register', formData);
             console.log(response.data);
         } catch (error) {
             console.error('There was an error registering!', error);

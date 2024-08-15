@@ -3,26 +3,25 @@ package org.nebula_tech.itinera.controllers;
 import jakarta.validation.Valid;
 import org.nebula_tech.itinera.dto.LoginFormDTO;
 import org.springframework.http.ResponseEntity;
-import org.springframework.ui.Model;
+
 import jakarta.servlet.http.HttpSession;
 import org.nebula_tech.itinera.dto.RegisterFormDTO;
 import org.nebula_tech.itinera.repositories.UserRepository;
 import org.nebula_tech.itinera.models.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
 
-@Controller
+@RestController
+@RequestMapping("/api/public")
 public class AuthenticationController {
 
     @Autowired
     UserRepository userRepository;
 
-    private static final String userSessionKey = "user";
+    private static final String userSessionKey = "userID";
 
     public User getUserFromSession(HttpSession session) {
         Integer userId = (Integer) session.getAttribute(userSessionKey);
@@ -41,13 +40,6 @@ public class AuthenticationController {
 
     private static void setUserInSession(HttpSession session, User user) {
         session.setAttribute(userSessionKey, user.getId());
-    }
-
-    @GetMapping("/register")
-    public String displayRegistrationForm(Model model) {
-        model.addAttribute(new RegisterFormDTO());
-        model.addAttribute("title", "Register");
-        return "register";
     }
 
     @PostMapping("/register")
