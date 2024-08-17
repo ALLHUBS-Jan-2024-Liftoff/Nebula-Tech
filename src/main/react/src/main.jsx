@@ -14,6 +14,8 @@ import ExplorePage from "./pages/ExplorePage.jsx"
 import UserDashboard from "./pages/UserDashboard.jsx"
 import 'bootstrap/dist/css/bootstrap.min.css'
 import './assets/styles/global.css'
+import FAQ from './pages/FAQ.jsx';
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -59,6 +61,12 @@ const router = createBrowserRouter([
     path: "/explore",
     element: <ExplorePage />,
   },
+  {
+    path: "/faq",
+    element: <FAQ />,
+  },
+
+  
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(
