@@ -6,8 +6,8 @@ import "./TripDateSelect.css";
 function TripDateSelect({ trip }) {
     const navigate = useNavigate();
 
-    const handleDateSelect = (year, range, dateIndex) => {
-        sessionStorage.setItem('itineraCheckout', JSON.stringify({ year, range, dateIndex, tripId: trip.tripId }));
+    const handleDateSelect = (year, range, price) => {
+        sessionStorage.setItem('itineraCheckout', JSON.stringify({ year, range, price, tripId: trip.tripId, title: trip.title }));
         navigate('/checkout');
     }
 
@@ -43,7 +43,7 @@ function TripDateSelect({ trip }) {
                                     </th>
                                 </tr>
                                 {trip?.dates[year].map((date, dateIndex) => (
-                                    <tr onClick={() => handleDateSelect(year, date.date, dateIndex)} key={'date' + dateIndex}>
+                                    <tr onClick={() => handleDateSelect(year, date.date, date.price)} key={'date' + dateIndex}>
                                         <td>
                                             <div className='trip-date-select-input-row'>
                                                 <div className="trip-date-select-circle"></div>

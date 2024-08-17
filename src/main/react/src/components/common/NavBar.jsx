@@ -41,7 +41,7 @@ function NavBar() {
         setSearchTerm(e.target.value);
         if (e.target.value.trim()) {
             setLoading(true);
-            axios.get('/api/public/search-demo-trips?query=' + e.target.value.trim())
+            axios.get('/api/public/search-trips?query=' + e.target.value.trim())
                 .then(response => { setSearchResults(response.data); })
                 .catch(error => { alert(JSON.stringify(error)); })
                 .finally(() => { setLoading(false); });

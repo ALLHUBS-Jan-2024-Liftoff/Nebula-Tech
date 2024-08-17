@@ -1,8 +1,10 @@
 package org.nebula_tech.itinera.models;
 
+import jakarta.persistence.Embeddable;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;
 
+@Embeddable
 public class BookingAccount {
     @NotEmpty(message = "First name required")
     private String firstName;
