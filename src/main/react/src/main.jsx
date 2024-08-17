@@ -14,7 +14,7 @@ import ExplorePage from "./pages/ExplorePage.jsx"
 import UserDashboard from "./pages/UserDashboard.jsx"
 import 'bootstrap/dist/css/bootstrap.min.css'
 import './assets/styles/global.css'
-import FAQ from './pages/FAQ.jsx';
+import FAQPage from './pages/FAQPage.jsx';
 
 const router = createBrowserRouter([
   {
@@ -63,7 +63,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/faq",
-    element: <FAQ />,
+    element: <FAQPage />,
   },
 
   
