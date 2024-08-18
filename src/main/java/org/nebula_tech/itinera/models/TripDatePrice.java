@@ -1,11 +1,11 @@
 package org.nebula_tech.itinera.models;
 
-public class DemoTripDatePrice {
+public class TripDatePrice {
     private Long price;
     private String date;
     private String type;
 
-    public DemoTripDatePrice(Long price, String date, String type) {
+    public TripDatePrice(Long price, String date, String type) {
         this.price = price;
         this.date = date;
         this.type = type;

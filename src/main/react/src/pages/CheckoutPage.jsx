@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { X } from 'react-bootstrap-icons'
 import CheckoutEmailForm from '../components/checkout/CheckoutEmailForm';
@@ -13,8 +13,9 @@ import './CheckoutPage.css'
 
 function CheckoutPage() {
     const [selectedForm, setSelectedForm] = useState(0);
+    const [selectedTrip, setSelectedTrip] = useState(null);
     const [checkout, setCheckout] = useState({
-        account: { // Account model
+        account: {
             firstName: "",
             middleName: "",
             lastName: "",
@@ -26,9 +27,19 @@ function CheckoutPage() {
             dateOfBirth: "",
             hasGroup: ""
         },
-        tripId: "test_trip_id",
-        tripDate: "13/12/2024"
+        tripId: null,
+        tripDate: ""
     });
+
+    useEffect(() => {
+        try {
+            const { year, range, price, title, tripId } = JSON.parse(sessionStorage.getItem('itineraCheckout'));
+            setSelectedTrip({ date: range.split(" - ")[0] + ", " + year, price: price / 100, title });
+            setCheckout({ ...checkout, tripId, tripDate: year + "/" + range});
+        } catch {
+            alert("Error: No trip selected");
+        }
+    }, []);
 
     const handleAccountChange = (field, value) => {
         setCheckout({ ...checkout, account: { ...checkout.account, [field]: value } });
@@ -60,10 +71,10 @@ function CheckoutPage() {
                 </div>
                 <div className='checkout-review-col'>
                     <div className='checkout-review-main-title checkout-review-row'>
-                        <span><b>Highlights of Japan</b></span>
+                        <span><b>{selectedTrip?.title}</b></span>
                     </div>
                     <div className='checkout-review-row'>
-                        <span>Departing September 1, 2024</span>
+                        <span>Departing {selectedTrip?.date}</span>
                     </div>
                     <div className='checkout-review-row'>
                         <span>from Little Rock, AR</span>
@@ -71,11 +82,11 @@ function CheckoutPage() {
                     <br />
                     <div className='checkout-review-row'>
                         <span>Total price with flights</span>
-                        <span>$5989</span>
+                        <span>${selectedTrip?.price}</span>
                     </div>
                     <div className='checkout-review-row'>
                         <span><b>Due today</b></span>
-                        <span><b>$5989</b></span>
+                        <span><b>${selectedTrip?.price}</b></span>
                     </div>
                     <br />
                     <div className='checkout-review-row'>
@@ -84,7 +95,7 @@ function CheckoutPage() {
                     <hr />
                     <div className='checkout-review-row'>
                         <span>With round-trip flights</span>
-                        <span>$5989</span>
+                        <span>${selectedTrip?.price}</span>
                     </div>
                     <div className='checkout-review-row'>
                         <span>Rooming</span>
