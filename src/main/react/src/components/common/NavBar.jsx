@@ -180,7 +180,7 @@ function NavBar() {
                 </div>) : null}
             </li>
             <li className='nav-main-link-li'>
-                <a href="/login" className='nav-main-link nav-main-link-login'>Login</a>
+                <a href="/register" className='nav-main-link nav-main-link-login'>Register</a>
             </li>
             <li className='nav-main-link-li'>
                 <Link to="/demo" className='nav-main-link'>Demo</Link>
