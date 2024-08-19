@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import {useNavigate} from "react-router-dom";
 
 function EditProfile({ user, onProfileUpdate, onCancel }) {
     const [formData, setFormData] = useState({
@@ -17,11 +18,14 @@ function EditProfile({ user, onProfileUpdate, onCancel }) {
         });
     };
 
+    const navigate = useNavigate();  // Initialize the useNavigate hook
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
             const response = await axios.put('/api/public/update-profile', formData);
-            onProfileUpdate(response.data); // Call the parent method to update the profile details
+            onProfileUpdate(response.data);
+            navigate('/dashboard');  // Redirect to dashboard on successful edit
         } catch (error) {
             console.error('Error updating profile:', error);
         }

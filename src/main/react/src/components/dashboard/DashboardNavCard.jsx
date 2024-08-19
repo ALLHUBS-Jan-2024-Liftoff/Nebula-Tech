@@ -47,6 +47,7 @@ function DashboardNavCard() {
             setUserData(response.data);
             setEditing(false);
             console.log("User data updated successfully:", response.data);
+            navigate('/dashboard');  // Redirect to dashboard on successful registration
         } catch (error) {
             console.error('Error updating user data:', error.response ? error.response.data : error.message);
         }
