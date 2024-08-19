@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import { X, Headset, Search, Journal } from 'react-bootstrap-icons'
 import Spinner from 'react-bootstrap/Spinner'
@@ -14,7 +14,36 @@ function NavBar() {
     const [searchTerm, setSearchTerm] = useState("");
     const [searchResults, setSearchResults] = useState([]);
     const [loading, setLoading] = useState(false);
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const navigate = useNavigate(); // For navigation after logout
+
     const searchImgs = [searchImg1, searchImg2, searchImg3];
+
+    useEffect(() => {
+        // Check if the user is logged in
+        const checkLoginStatus = async () => {
+            try {
+                const response = await axios.get('/api/public/user');
+                if (response.status === 200) {
+                    setIsLoggedIn(true);
+                }
+            } catch (error) {
+                setIsLoggedIn(false);
+            }
+        };
+
+        checkLoginStatus();
+    }, []);
+
+    const handleLogout = async () => {
+        try {
+            await axios.post('/api/public/logout'); // This will call the logout endpoint and invalidate the session
+            setIsLoggedIn(false);
+            navigate('/'); // Redirect to home page after logout
+        } catch (error) {
+            console.error('Error logging out:', error);
+        }
+    };
 
     const handleButtonClick = (e) => {
         e.preventDefault();
@@ -180,12 +209,24 @@ function NavBar() {
                         </ul>
                     </div>) : null}
                 </li>
-                <li className='nav-main-link-li'>
-                    <a href="/login" className='nav-main-link nav-main-link-login'>Login</a>
-                </li>
-                <li className='nav-main-link-li'>
-                    <a href="/Register" className='nav-main-link nav-main-link-login'>Register</a>
-                </li>
+                {isLoggedIn ? (
+                    <>
+                        <li className='nav-main-link-li'>
+                            <a href="/" onClick={handleLogout} className='nav-main-link nav-main-link-logout'>
+                                Logout
+                            </a>
+                        </li>
+                    </>
+                ) : (
+                    <>
+                        <li className='nav-main-link-li'>
+                            <Link to="/login" className='nav-main-link nav-main-link-login'>Login</Link>
+                        </li>
+                        <li className='nav-main-link-li'>
+                            <Link to="/register" className='nav-main-link nav-main-link-register'>Register</Link>
+                        </li>
+                    </>
+                )}
                 <li className='nav-main-link-li'>
                     <Link to="/demo" className='nav-main-link'>Demo</Link>
                 </li>

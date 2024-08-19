@@ -107,6 +107,13 @@ public class AuthenticationController {
         return ResponseEntity.ok(user);
     }
 
+    @PostMapping("/logout")
+    public ResponseEntity<?> logout(HttpSession session) {
+        session.invalidate();  // Invalidate the session
+        System.out.println("User logged out successfully. Session invalidated.");
+        return ResponseEntity.ok("User logged out successfully");
+    }
+
     public User getUserFromSession(HttpSession session) {
         Integer userId = (Integer) session.getAttribute(userSessionKey);
         if (userId == null) {
