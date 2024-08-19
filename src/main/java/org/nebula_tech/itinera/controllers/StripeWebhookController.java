@@ -43,13 +43,7 @@ public class StripeWebhookController {
             JsonObject jsonPaymentIntent = gson.fromJson(event.getData().toJson(), JsonElement.class).getAsJsonObject();
             JsonObject object = jsonPaymentIntent.getAsJsonObject("object");
             JsonObject metadata = object.getAsJsonObject("metadata");
-            JsonObject bookingData = gson.fromJson(metadata.get("bookingData").getAsString(), JsonObject.class);
-            BookingAccount account = gson.fromJson(bookingData.get("account"), BookingAccount.class);
-            Booking booking = new Booking();
-            booking.setCustomerId(object.getAsJsonObject().get("customer").getAsString());
-            booking.setTripId(bookingData.get("tripId").getAsLong());
-            booking.setTripDate(bookingData.get("tripDate").getAsString());
-            booking.setAccount(account);
+            Booking booking = gson.fromJson(metadata.get("bookingData").getAsString(), Booking.class);
             bookingRepository.save(booking);
         } else {
             System.out.println("Unhandled event type: " + event.getType());

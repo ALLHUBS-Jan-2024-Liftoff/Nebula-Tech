@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from '@stripe/react-stripe-js';
@@ -16,12 +16,18 @@ function CheckoutStripeForm({ onFormChange, checkoutData }) {
       setStripePromise(loadStripe('pk_test_51PpG87RvZv1FNR3S1USwiupYO4OjIeUaEtcycLSpNmF1xBEYG8fS7QRRerhxW0KMALPIoHPt67n4IuDIhBRYtfhE00iHVr1j02'));
     }, []);
 
+    const firstRender = useRef(true);
+
     useEffect(() => {
-        axios.post('/api/public/stripe/create-intent', checkoutData)
-          .then(response => { setTransactionClientSecret(response.data) })
-          .catch(error => { alert(JSON.stringify(error)); });
+      if (firstRender.current) {
+          firstRender.current = false;
+
+          axios.post('/api/public/stripe/create-intent', checkoutData)
+            .then(response => { setTransactionClientSecret(response.data) })
+            .catch(error => { alert(JSON.stringify(error)); });
+      }
     }, []);
-    
+
     return (
       <>
         <div className="checkout-stripe-form-wrapper">
