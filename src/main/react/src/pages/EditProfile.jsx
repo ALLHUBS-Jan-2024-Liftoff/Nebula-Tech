@@ -25,7 +25,7 @@ function EditProfile({ user, onProfileUpdate, onCancel }) {
         try {
             const response = await axios.put('/api/public/update-profile', formData);
             onProfileUpdate(response.data);
-            navigate('/dashboard');  // Redirect to dashboard on successful edit
+            navigate('/dashboard');
         } catch (error) {
             console.error('Error updating profile:', error);
         }
