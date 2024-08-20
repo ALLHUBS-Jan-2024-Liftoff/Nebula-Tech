@@ -23,6 +23,7 @@ function CheckoutPersonalForm({ onPersonalChange, onFormChange, checkoutAccount 
     const [dateOfBirthErr, setDateOfBirthErr] = useState('');
 
     useEffect(() => {
+        window.scrollTo({ top: 0, left: 0, behavior: "instant" });
         if (checkoutAccount.firstName) { setFirstName(checkoutAccount.firstName); }
         if (checkoutAccount.middleName) { setMiddleName(checkoutAccount.middleName); }
         if (checkoutAccount.lastName) { setLastName(checkoutAccount.lastName); }
