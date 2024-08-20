@@ -2,6 +2,7 @@ package org.nebula_tech.itinera.controllers;
 
 import jakarta.validation.Valid;
 import org.nebula_tech.itinera.dto.LoginFormDTO;
+import org.nebula_tech.itinera.dto.UserProfileUpdateDTO;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
@@ -14,6 +15,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
+
+
 
 @RestController
 @RequestMapping("/api/public")
@@ -114,6 +117,8 @@ public class AuthenticationController {
         return ResponseEntity.ok("User logged out successfully");
     }
 
+
+
     public User getUserFromSession(HttpSession session) {
         Integer userId = (Integer) session.getAttribute(userSessionKey);
         if (userId == null) {
@@ -127,6 +132,24 @@ public class AuthenticationController {
         }
 
         return user.get();
+    }
+
+    @PutMapping("/update-profile")
+    public ResponseEntity<?> updateProfile(@RequestBody @Valid UserProfileUpdateDTO userProfileUpdateDTO, HttpSession session) {
+        User user = getUserFromSession(session);
+        if (user == null) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("User not logged in");
+        }
+
+        // Update user details
+        user.setUsername(userProfileUpdateDTO.getUsername());
+        user.setEmail(userProfileUpdateDTO.getEmail());
+        user.setFirstName(userProfileUpdateDTO.getFirstName());
+        user.setLastName(userProfileUpdateDTO.getLastName());
+
+        userRepository.save(user); // Save the updated user
+
+        return ResponseEntity.ok(user);
     }
 
     private static void setUserInSession(HttpSession session, User user) {
