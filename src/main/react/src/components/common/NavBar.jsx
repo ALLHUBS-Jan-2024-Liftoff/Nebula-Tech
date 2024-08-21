@@ -227,9 +227,6 @@ function NavBar() {
                         </li>
                     </>
                 )}
-                <li className='nav-main-link-li'>
-                    <Link to="/demo" className='nav-main-link'>Demo</Link>
-                </li>
             </ul>
         </nav>
           <div className='secondary-nav-container'>
