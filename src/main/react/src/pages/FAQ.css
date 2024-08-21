@@ -1,0 +1,19 @@
+.faq-section {
+    font-family: Arial, Helvetica;
+}
+
+.faq-header {
+    height: 300px;
+    display: flex;
+    background-image: url('https://www.emeraldislerealty.com/wp-content/uploads/2019/12/faq-in-sand-1366x380.jpg');
+    align-items: center;
+    justify-content: center;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.faq-container {
+    max-width: 800px;
+    margin: auto;
+}
