@@ -3,6 +3,8 @@ package org.nebula_tech.itinera.controllers;
 import jakarta.validation.Valid;
 import org.nebula_tech.itinera.dto.LoginFormDTO;
 import org.nebula_tech.itinera.dto.UserProfileUpdateDTO;
+import org.nebula_tech.itinera.models.Trip;
+import org.nebula_tech.itinera.repositories.TripRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
@@ -14,6 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Map;
 import java.util.Optional;
 
 
@@ -24,6 +27,9 @@ public class AuthenticationController {
 
     @Autowired
     UserRepository userRepository;
+
+    @Autowired
+    TripRepository tripRepository;
 
     private static final String userSessionKey = "userID";
 
@@ -154,5 +160,48 @@ public class AuthenticationController {
 
     private static void setUserInSession(HttpSession session, User user) {
         session.setAttribute(userSessionKey, user.getId());
+    }
+    @PostMapping("/wishlist/add")
+    public ResponseEntity<?> addToWishlist(@RequestBody Map<String, Long> payload, HttpSession session) {
+        Long tripId = payload.get("tripId");
+        if (tripId == null) {
+            return ResponseEntity.badRequest().body("Trip ID is required");
+        }
+
+        User user = getUserFromSession(session);
+        if (user == null) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("User not logged in");
+        }
+
+        Optional<Trip> trip = tripRepository.findById(tripId);
+        if (trip.isPresent()) {
+            user.getWishlist().add(trip.get());
+            userRepository.save(user);
+            return ResponseEntity.ok("Trip added to wishlist");
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Trip not found");
+        }
+    }
+
+    @PostMapping("/wishlist/remove")
+    public ResponseEntity<?> removeFromWishlist(@RequestBody Map<String, Long> payload, HttpSession session) {
+        Long tripId = payload.get("tripId");
+        if (tripId == null) {
+            return ResponseEntity.badRequest().body("Trip ID is required");
+        }
+
+        User user = getUserFromSession(session);
+        if (user == null) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("User not logged in");
+        }
+
+        Optional<Trip> trip = tripRepository.findById(tripId);
+        if (trip.isPresent()) {
+            user.getWishlist().remove(trip.get());
+            userRepository.save(user);
+            return ResponseEntity.ok("Trip removed from wishlist");
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Trip not found");
+        }
     }
 }
