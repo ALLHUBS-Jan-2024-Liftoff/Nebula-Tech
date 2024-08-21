@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import Nav from 'react-bootstrap/Nav';
@@ -164,7 +165,9 @@ function DashboardNavCard() {
                         {wishlist.length > 0 ? (
                             wishlist.map(trip => (
                                 <div key={trip.tripId}>
-                                    <p><strong>{trip.title}</strong> in {trip.country}</p>
+                                    <Link to={`/trip/${trip.tripId}`}>
+                                        <p><strong>{trip.title}</strong> in {trip.country}</p>
+                                    </Link>
                                 </div>
                             ))
                         ) : (
