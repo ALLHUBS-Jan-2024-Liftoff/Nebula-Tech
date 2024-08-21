@@ -8,6 +8,8 @@ import com.stripe.model.PaymentIntent;
 import com.stripe.param.PaymentIntentCreateParams;
 import com.stripe.exception.StripeException;
 import org.nebula_tech.itinera.dto.CheckoutDTO;
+import org.nebula_tech.itinera.models.Booking;
+import org.nebula_tech.itinera.models.BookingTrip;
 import org.nebula_tech.itinera.models.Trip;
 import org.nebula_tech.itinera.repositories.TripRepository;
 import org.nebula_tech.itinera.utils.CustomerUtil;
@@ -35,7 +37,9 @@ public class StripeController {
         Stripe.apiKey = stripeApiKey;
 
         Optional<Trip> dbTrip = tripRepository.findById(Long.valueOf(request.getTripId()));
-        if (dbTrip.isPresent()) {
+        if (dbTrip.isEmpty()) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Trip not found");
+        } else {
             Long tripPrice = dbTrip.get().getPriceByYearAndDate(request.getTripDate());
             if (tripPrice == null) {
                 throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Trip price not found");
@@ -45,8 +49,13 @@ public class StripeController {
                     request.getAccount().getFirstName() + " " + request.getAccount().getLastName()
                 );
 
+                Booking booking = new Booking();
+                booking.setCustomerId(customer.getId());
+                booking.setAccount(request.getAccount());
+                booking.setTrip(new BookingTrip(dbTrip.get().getTripId(), request.getTripDate(), dbTrip.get().getTitle(), tripPrice));
+
                 Gson gson = new Gson();
-                String bookingData = gson.toJson(request);
+                String bookingData = gson.toJson(booking);
 
                 PaymentIntentCreateParams intentParams = PaymentIntentCreateParams.builder()
                     .setCustomer(customer.getId())
@@ -89,8 +98,6 @@ public class StripeController {
                 System.out.println(session.getUrl());
                 return paymentIntent.getClientSecret();
             }
-        } else {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Trip not found");
         }
     }
 }

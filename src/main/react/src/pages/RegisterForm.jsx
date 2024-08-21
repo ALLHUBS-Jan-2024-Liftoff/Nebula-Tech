@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';  // Import useNavigate
 import NavBar from '../components/common/NavBar';
 import CommonFooter from '../components/common/CommonFooter';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -15,6 +16,8 @@ const RegisterForm = () => {
         email: ''
     });
 
+    const navigate = useNavigate();  // Initialize the useNavigate hook
+
     const handleChange = (e) => {
         const { name, value } = e.target;
         setFormData({
@@ -28,6 +31,7 @@ const RegisterForm = () => {
         try {
             const response = await axios.post('/api/public/register', formData);
             console.log(response.data);
+            navigate('/dashboard');  // Redirect to dashboard on successful registration
         } catch (error) {
             console.error('There was an error registering!', error);
         }

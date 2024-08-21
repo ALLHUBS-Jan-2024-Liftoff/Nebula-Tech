@@ -2,6 +2,8 @@ package org.nebula_tech.itinera.controllers;
 
 import jakarta.validation.Valid;
 import org.nebula_tech.itinera.dto.LoginFormDTO;
+import org.nebula_tech.itinera.dto.UserProfileUpdateDTO;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
 import jakarta.servlet.http.HttpSession;
@@ -14,6 +16,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
 
+
+
 @RestController
 @RequestMapping("/api/public")
 public class AuthenticationController {
@@ -23,24 +27,18 @@ public class AuthenticationController {
 
     private static final String userSessionKey = "userID";
 
-    public User getUserFromSession(HttpSession session) {
-        Integer userId = (Integer) session.getAttribute(userSessionKey);
-        if (userId == null) {
-            return null;
-        }
+    private void logSessionDetails(HttpSession session) {
+        // Log the session ID
+        System.out.println("Session ID: " + session.getId());
 
-        Optional<User> user = userRepository.findById(userId);
-
-        if (user.isEmpty()) {
-            return null;
-        }
-
-        return user.get();
+        // Log the session attributes
+        System.out.println("Session Contents: ");
+        session.getAttributeNames().asIterator().forEachRemaining(attrName ->
+                System.out.println(attrName + ": " + session.getAttribute(attrName))
+        );
     }
 
-    private static void setUserInSession(HttpSession session, User user) {
-        session.setAttribute(userSessionKey, user.getId());
-    }
+
 
     @PostMapping("/register")
     public ResponseEntity<?> processRegistrationForm(@RequestBody @Valid RegisterFormDTO registerFormDTO, HttpSession session) {
@@ -61,6 +59,14 @@ public class AuthenticationController {
 
         // Set user in session
         setUserInSession(session, newUser);
+
+        // Store registration form information in the session
+        session.setAttribute("registrationForm", registerFormDTO);
+
+        // Log user and session details
+        System.out.println("User registered successfully: " + newUser.getUsername());
+        logSessionDetails(session);
+
 
         // Return success response
         return ResponseEntity.ok("User registered successfully");
@@ -84,7 +90,69 @@ public class AuthenticationController {
         // Set user in session
         setUserInSession(session, user);
 
+        System.out.println("User logged in successfully: " + user.getUsername());
+        logSessionDetails(session);
+
         // Return success response
         return ResponseEntity.ok("User logged in successfully");
+    }
+
+    // Method to get user details from the session
+    @GetMapping("/user")
+    public ResponseEntity<?> getUserInfo(HttpSession session) {
+        System.out.println("Attempting to retrieve user from session...");
+        User user = getUserFromSession(session);
+        if (user == null) {
+            System.out.println("No user found in session.");
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("User not logged in");
+        }
+        System.out.println("User found: " + user.getUsername());
+        return ResponseEntity.ok(user);
+    }
+
+    @PostMapping("/logout")
+    public ResponseEntity<?> logout(HttpSession session) {
+        session.invalidate();  // Invalidate the session
+        System.out.println("User logged out successfully. Session invalidated.");
+        return ResponseEntity.ok("User logged out successfully");
+    }
+
+
+
+    public User getUserFromSession(HttpSession session) {
+        Integer userId = (Integer) session.getAttribute(userSessionKey);
+        if (userId == null) {
+            return null;
+        }
+
+        Optional<User> user = userRepository.findById(userId);
+
+        if (user.isEmpty()) {
+            return null;
+        }
+
+        return user.get();
+    }
+
+    @PutMapping("/update-profile")
+    public ResponseEntity<?> updateProfile(@RequestBody @Valid UserProfileUpdateDTO userProfileUpdateDTO, HttpSession session) {
+        User user = getUserFromSession(session);
+        if (user == null) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("User not logged in");
+        }
+
+        // Update user details
+        user.setUsername(userProfileUpdateDTO.getUsername());
+        user.setEmail(userProfileUpdateDTO.getEmail());
+        user.setFirstName(userProfileUpdateDTO.getFirstName());
+        user.setLastName(userProfileUpdateDTO.getLastName());
+
+        userRepository.save(user); // Save the updated user
+
+        return ResponseEntity.ok(user);
+    }
+
+    private static void setUserInSession(HttpSession session, User user) {
+        session.setAttribute(userSessionKey, user.getId());
     }
 }
