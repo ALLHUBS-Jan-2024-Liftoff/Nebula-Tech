@@ -184,7 +184,12 @@ public class AuthenticationController {
     }
 
     @PostMapping("/wishlist/remove")
-    public ResponseEntity<?> removeFromWishlist(@RequestBody Long tripId, HttpSession session) {
+    public ResponseEntity<?> removeFromWishlist(@RequestBody Map<String, Long> payload, HttpSession session) {
+        Long tripId = payload.get("tripId");
+        if (tripId == null) {
+            return ResponseEntity.badRequest().body("Trip ID is required");
+        }
+
         User user = getUserFromSession(session);
         if (user == null) {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("User not logged in");
