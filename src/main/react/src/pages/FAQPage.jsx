@@ -9,7 +9,7 @@ const FAQPage = () => {
         <div>
             <NavBar/>
             <FAQHeader/>
-                <div className="container mt-5">
+                <div className="faq-container mt-5">
                     <FAQ/>
                 </div>
         </div>
