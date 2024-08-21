@@ -39,7 +39,7 @@ function CommonFooter() {
                         <div className="common-footer-bottom-col">
                             <h3>about</h3>
                             <ul>
-                                <li><Link to="/explore">What we do</Link></li>
+                                <li><Link to="/about">What we do</Link></li>
                             </ul>
                         </div>
                         <div className="common-footer-bottom-col">
