@@ -13,8 +13,10 @@ import LoginForm from "./pages/LoginForm.jsx"
 import ExplorePage from "./pages/ExplorePage.jsx"
 import UserDashboard from "./pages/UserDashboard.jsx"
 import WhatWeDoPage from "./pages/WhatWeDoPage.jsx"
+import FAQPage from './pages/FAQPage.jsx';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import './assets/styles/global.css'
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -61,6 +63,10 @@ const router = createBrowserRouter([
     element: <ExplorePage />,
   },
   {
+    path: "/faq",
+    element: <FAQPage />,
+  },
+  {  
     path: "/about",
     element: <WhatWeDoPage />,
   },

@@ -19,7 +19,7 @@ function TripDetailsPage() {
   }, []);
 
   useEffect(() => {
-      axios.get('/api/public/trips/' + ("123456".includes(id) ? id : "1"))
+      axios.get('/api/public/demo-trips/' + ("123456".includes(id) ? id : "1"))
         .then(response => { setTripDetails(response.data) })
         .catch(error => { alert(JSON.stringify(error)); });
   }, []);
