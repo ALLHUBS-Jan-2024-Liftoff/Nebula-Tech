@@ -12,6 +12,7 @@ import RegisterForm from "./pages/RegisterForm.jsx"
 import LoginForm from "./pages/LoginForm.jsx"
 import ExplorePage from "./pages/ExplorePage.jsx"
 import UserDashboard from "./pages/UserDashboard.jsx"
+import WhatWeDoPage from "./pages/WhatWeDoPage.jsx"
 import 'bootstrap/dist/css/bootstrap.min.css'
 import './assets/styles/global.css'
 const router = createBrowserRouter([
@@ -58,6 +59,10 @@ const router = createBrowserRouter([
   {
     path: "/explore",
     element: <ExplorePage />,
+  },
+  {
+    path: "/about",
+    element: <WhatWeDoPage />,
   },
 ]);
 
