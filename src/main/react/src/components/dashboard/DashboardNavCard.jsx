@@ -7,6 +7,7 @@ import axios from "axios";
 function DashboardNavCard() {
     const [activeTab, setActiveTab] = useState('#account');
     const [userData, setUserData] = useState(null); // Initial state is null
+    const [wishlist, setWishlist] = useState([]);
     const [editing, setEditing] = useState(false);
     const [formData, setFormData] = useState({
         username: '',
@@ -65,6 +66,17 @@ function DashboardNavCard() {
         });
     };
 
+    useEffect(() => {
+        const fetchWishlist = async () => {
+            try {
+                const response = await axios.get('/api/public/user');
+                setWishlist(response.data.wishlist);
+            } catch (error) {
+                console.error('Error fetching wishlist:', error.response ? error.response.data : error.message);
+            }
+        };
+        fetchWishlist();
+    }, []);
     return (
         <Card>
             <Card.Header>
@@ -149,7 +161,15 @@ function DashboardNavCard() {
                 {activeTab === '#wishlist' && (
                     <div>
                         <Card.Title>My Wishlist</Card.Title>
-                        <Card.Text>Nothing yet. Save trips you love and see them here!</Card.Text>
+                        {wishlist.length > 0 ? (
+                            wishlist.map(trip => (
+                                <div key={trip.tripId}>
+                                    <p><strong>{trip.title}</strong> in {trip.country}</p>
+                                </div>
+                            ))
+                        ) : (
+                            <Card.Text>Your wishlist is empty. Start adding trips!</Card.Text>
+                        )}
                     </div>
                 )}
             </Card.Body>

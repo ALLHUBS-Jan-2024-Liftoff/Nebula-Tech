@@ -1,10 +1,9 @@
 package org.nebula_tech.itinera.models;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import jakarta.persistence.Entity;
 import jakarta.validation.constraints.NotNull;
+
+import java.util.List;
 
 @Entity
 public class User {
@@ -27,6 +26,14 @@ public class User {
 
     @NotNull
     private String pwHash;
+
+    @ManyToMany
+    @JoinTable(
+            name = "user_wishlist",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "trip_id")
+    )
+    private List<Trip> wishlist;
 
     private static final BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 
@@ -91,5 +98,14 @@ public class User {
 
     public Integer getId() {
         return id;
+    }
+
+
+    public List<Trip> getWishlist() {
+        return wishlist;
+    }
+
+    public void setWishlist(List<Trip> wishlist) {
+        this.wishlist = wishlist;
     }
 }
