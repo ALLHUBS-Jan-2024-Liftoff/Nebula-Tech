@@ -201,6 +201,11 @@ public class TripController {
         return tripRepository.searchByTitleOrCountry(query.toLowerCase(), pageable);
     }
 
+    @GetMapping("/trips")
+    public ResponseEntity<List<Trip>> getAllTrips() {
+        return ResponseEntity.ok((List<Trip>) tripRepository.findAll());
+    }
+
     @GetMapping("/trips/{id}")
     public ResponseEntity<Trip> getTripById(@PathVariable Long id) {
         return tripRepository.findById(id).map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());

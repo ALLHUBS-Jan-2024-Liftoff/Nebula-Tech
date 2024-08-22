@@ -13,7 +13,8 @@ function CheckoutStripeForm({ onFormChange, checkoutData }) {
   useEffect(() => {
     //    calls `loadStripe` outside of component's render
     //      to prevent recreating `Stripe` object on each render
-    setStripePromise(loadStripe("pk_test_51PpG87RvZv1FNR3S1USwiupYO4OjIeUaEtcycLSpNmF1xBEYG8fS7QRRerhxW0KMALPIoHPt67n4IuDIhBRYtfhE00iHVr1j02"));
+//     setStripePromise(loadStripe("pk_test_51PpG87RvZv1FNR3S1USwiupYO4OjIeUaEtcycLSpNmF1xBEYG8fS7QRRerhxW0KMALPIoHPt67n4IuDIhBRYtfhE00iHVr1j02"));
+    setStripePromise(loadStripe("pk_test_jW3zmhFPY3tGBhUUk99UwgRv008Lwuldbx"));
   }, []);
 
   const firstRender = useRef(true);

@@ -16,6 +16,7 @@ function DashboardNavCard() {
         lastName: '',
         email: ''
     });
+    const [bookings, setBookings] = useState([]);
 
     useEffect(() => {
         const fetchUserData = async () => {
@@ -35,6 +36,18 @@ function DashboardNavCard() {
             }
         };
         fetchUserData();
+    }, []);
+
+    useEffect(() => {
+        const fetchBooking = async () => {
+            try {
+                const response = await axios.get('/api/private/bookings');
+                setBookings(response.data);
+            } catch (error) {
+                console.error('Error fetching user data:', error.response ? error.response.data : error.message);
+            }
+        };
+        fetchBooking();
     }, []);
 
     const handleEditClick = () => {
@@ -156,7 +169,7 @@ function DashboardNavCard() {
                 {activeTab === '#bookings' && (
                     <div>
                         <Card.Title>My Bookings</Card.Title>
-                        <Card.Text>Nothing yet. Book a trip and view the details here!</Card.Text>
+                        {!bookings.length ? <Card.Text>Nothing yet. Book a trip and view the details here!</Card.Text> : <p>{JSON.stringify(bookings)}</p>}
                     </div>
                 )}
                 {activeTab === '#wishlist' && (

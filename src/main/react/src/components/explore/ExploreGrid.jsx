@@ -1,79 +1,53 @@
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-import ExploreCard from './ExploreCard';
-import './ExploreGrid.css'
-
+import { useState, useEffect } from "react";
+import axios from "axios";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import ExploreCard from "./ExploreCard";
+import australiaImg from "../../assets/images/explore1.jpg";
+import italyImg from "../../assets/images/explore2.jpg";
+import indiaImg from "../../assets/images/explore3.jpg";
+import mexicoImg from "../../assets/images/explore4.jpg";
+import argentinaImg from "../../assets/images/explore5.jpg";
+import japanImg from "../../assets/images/explore6.jpg";
+import "./ExploreGrid.css";
 
 function ExploreGrid() {
-  const cards = [
-    {
-      id: 1,
-      title: 'Card 1',
-      text: 'This is card 1',
-      image: 'holder.js/100px160',
-    },
-    {
-      id: 2,
-      title: 'Card 2',
-      text: 'This is card 2',
-      image: 'holder.js/100px160',
-    },
-    {
-    id: 3,
-    title: 'Card 3',
-    text: 'This is card 3',
-    image: 'holder.js/100px160',
-    },
-    {
-    id: 4,
-    title: 'Card 4',
-    text: 'This is card 4',
-    image: 'holder.js/100px160',
-    },
-    {
-    id: 5,
-    title: 'Card 5',
-    text: 'This is card 5',
-    image: 'holder.js/100px160',
-    },
-    {
-    id: 6,
-    title: 'Card 6',
-    text: 'This is card 6',
-    image: 'holder.js/100px160',
-    },
-    {
-    id: 7,
-    title: 'Card 7',
-    text: 'This is card 7',
-    image: 'holder.js/100px160',
-    },
-    {
-    id: 8,
-    title: 'Card 8',
-    text: 'This is card 8',
-    image: 'holder.js/100px160',
-    },
-    {
-    id: 9,
-    title: 'Card 9',
-    text: 'This is card 9',
-    image: 'holder.js/100px160',
-    },
-
-  ];
+  const [trips, setTrips] = useState([]);
+  const imgs = {
+    australia: australiaImg,
+    italy: italyImg,
+    india: indiaImg,
+    mexico: mexicoImg,
+    argentina: argentinaImg,
+    japan: japanImg,
+  };
+  useEffect(() => {
+    axios
+      .get("/api/public/trips")
+      .then((response) => {
+        setTrips(response.data);
+      })
+      .catch((error) => {
+        alert(JSON.stringify(error));
+      });
+  }, []);
 
   return (
-      <div className="card-grid-container">
-        <Row xs={1} md={3} className="g-4">
-          {cards.map((card, idx) => (
-              <Col key={idx}>
-                <ExploreCard title={card.title} text={card.text} image={card.image}/>
-              </Col>
-          ))}
-        </Row>
-      </div>
-        );
-        }
+    <div className="card-grid-container">
+      <Row xs={1} md={3} className="g-4">
+        {trips.map((trip, idx) => (
+          <Col key={idx}>
+            <ExploreCard
+              title={trip.country}
+              text={trip.title}
+              image={imgs[trip.country.toLowerCase()]}
+              id={trip.tripId}
+            />
+          </Col>
+        ))}
+      </Row>
+    </div>
+  );
+}
 
-        export default ExploreGrid;
+export default ExploreGrid;
