@@ -4,6 +4,7 @@
     justify-content: center;
     margin-top: 20px;
     margin-left: 7%;
+    padding-bottom: 40px; /* Add padding at the bottom to create space from the footer */
 }
 
 .card-grid-container .card {
