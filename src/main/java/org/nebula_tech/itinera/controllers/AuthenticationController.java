@@ -160,7 +160,12 @@ public class AuthenticationController {
 
     private static void setUserInSession(HttpSession session, User user) {
         session.setAttribute(userSessionKey, user.getId());
+        session.setAttribute("userEmail", user.getEmail());
     }
+
+
+
+
     @PostMapping("/wishlist/add")
     public ResponseEntity<?> addToWishlist(@RequestBody Map<String, Long> payload, HttpSession session) {
         Long tripId = payload.get("tripId");
