@@ -8,20 +8,20 @@ function ExploreGrid() {
   const cards = [
     {
       id: 1,
-      title: 'Card 1',
-      text: 'This is card 1',
+      title: 'Sicily & Malta Getaway',
+      text: '10 days, 6 cities',
       image: 'holder.js/100px160',
     },
     {
       id: 2,
-      title: 'Card 2',
-      text: 'This is card 2',
+      title: 'Holi in India: The Golden Triangle',
+      text: '9 days, 4 cities',
       image: 'holder.js/100px160',
     },
     {
     id: 3,
-    title: 'Card 3',
-    text: 'This is card 3',
+    title: 'Mexico City: Day of the Dead',
+    text: '7 days, 1 city',
     image: 'holder.js/100px160',
     },
     {

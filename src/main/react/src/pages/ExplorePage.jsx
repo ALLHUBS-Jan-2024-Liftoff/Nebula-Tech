@@ -17,7 +17,6 @@ function ExplorePage() {
     <NavBar />
     <main />
     <Header />
-    <ExploreDropdown />
     <ExploreGrid />
     <main />
     <CommonFooter />
