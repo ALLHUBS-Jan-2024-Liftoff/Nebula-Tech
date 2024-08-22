@@ -4,6 +4,16 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import Nav from 'react-bootstrap/Nav';
 import axios from "axios";
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import ExploreCard from "../explore/ExploreCard.jsx";
+import sicilyImg from '../../assets/images/sicily.jpg';
+import indiaImg from '../../assets/images/india.jpg';
+import mexicoImg from '../../assets/images/mexico.jpg';
+import alaskaImg from '../../assets/images/alaska.jpg';
+import japanImg from '../../assets/images/japanImg.jpg';
+import australiaImg from '../../assets/images/australia-city.jpg';
+import '../../pages/ExplorePage.css';
 
 function DashboardNavCard() {
     const [activeTab, setActiveTab] = useState('#account');
@@ -18,7 +28,14 @@ function DashboardNavCard() {
         email: ''
     });
     const [bookings, setBookings] = useState([]);
-
+    const imageMapping = {
+        'Sicily & Malta Getaway': sicilyImg,
+        'Holi in India: The Golden Triangle': indiaImg,
+        'Mexico City: Day of the Dead': mexicoImg,
+        'Hemisphere Hopper: Alaska to Argentina': alaskaImg,
+        'Highlights of Japan': japanImg,
+        'Australia and New Zealand Adventure': australiaImg,
+    };
 
     useEffect(() => {
         const fetchUserData = async () => {
@@ -197,16 +214,22 @@ function DashboardNavCard() {
                 {activeTab === '#wishlist' && (
                     <div>
                         <Card.Title>My Wishlist</Card.Title>
-                        {wishlist.length > 0 ? (
-                            wishlist.map(trip => (
-                                <div key={trip.tripId}>
-                                    <Link to={`/trip/${trip.tripId}`}>
-                                        <p><strong>{trip.title}</strong> in {trip.country}</p>
-                                    </Link>
-                                </div>
-                            ))
-                        ) : (
+                        {!wishlist.length ? (
                             <Card.Text>Your wishlist is empty. Start adding trips!</Card.Text>
+                        ) : (
+                            <Row xs={1} md={3} className="g-4">  {/* Adjust the grid for smaller cards */}
+                                {wishlist.map(trip => (
+                                    <Col key={trip.tripId}>
+                                        <ExploreCard
+                                            title={trip.title}
+                                            // text={`${trip.duration} Days, ${trip.cityCount} Cities`} // add hover text to the cards
+                                            image={imageMapping[trip.title]}
+                                            id={trip.tripId}
+                                            small={true}
+                                        />
+                                    </Col>
+                                ))}
+                            </Row>
                         )}
                     </div>
                 )}

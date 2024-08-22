@@ -1,0 +1,9 @@
+.small-card {
+    width: 12rem;  /* Smaller width */
+    height: 16rem; /* Smaller height */
+}
+
+.small-card-img {
+    height: 8rem; /* Adjust the image height accordingly */
+    object-fit: cover; /* Ensures the image fits nicely within the smaller dimensions */
+}
