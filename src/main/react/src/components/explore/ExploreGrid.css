@@ -8,7 +8,24 @@
 }
 
 .card-grid-container .card {
+    width: 18rem; /* Fixed width for all cards */
+    height: 22rem; /* Fixed height for all cards */
     margin: 10px; /* Add some margin to separate cards */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.card-grid-container .card img {
+    height: 12rem; /* Fixed height for images */
+    object-fit: cover; /* Ensures the image covers the area while maintaining aspect ratio */
+}
+
+.card-grid-container .card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-grow: 1;
 }
 .card-grid-container .col {
     display: flex;
