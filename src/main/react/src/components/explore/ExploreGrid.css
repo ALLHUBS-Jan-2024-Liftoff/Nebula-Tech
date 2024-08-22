@@ -2,9 +2,9 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    margin-top: 20px;
-    margin-left: 7%;
-    padding-bottom: 40px; /* Add padding at the bottom to create space from the footer */
+    max-width: 1200px;
+    width: 100%;
+    margin: 40px auto 100px auto;
 }
 
 .card-grid-container .card {
@@ -27,10 +27,17 @@
     justify-content: space-between;
     flex-grow: 1;
 }
+.card-grid-container .col {
+    display: flex;
+}
 
 .custom-button {
+    padding: 10px 15px;
+    color: #fff;
     background-color: #f98e64;
     border-color: #f98e64;
+    text-decoration: none;
+    border-radius: 4px;
 }
 
 .dropdown-menu {
