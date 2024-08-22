@@ -1,64 +1,52 @@
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-import ExploreCard from './ExploreCard';
-import sicilyImg from '../../assets/images/sicily.jpg';
-import indiaImg from '../../assets/images/india.jpg';
-import mexicoImg from '../../assets/images/mexico.jpg';
-import alaskaImg from '../../assets/images/alaska.jpg';
-import japanImg from '../../assets/images/japanImg.jpg';
-import australiaImg from '../../assets/images/australia-city.jpg';
-import './ExploreGrid.css';
+import { useState, useEffect } from "react";
+import axios from "axios";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import ExploreCard from "./ExploreCard";
+import australiaImg from "../../assets/images/explore1.jpg";
+import italyImg from "../../assets/images/explore2.jpg";
+import indiaImg from "../../assets/images/explore3.jpg";
+import mexicoImg from "../../assets/images/explore4.jpg";
+import argentinaImg from "../../assets/images/explore5.jpg";
+import japanImg from "../../assets/images/explore6.jpg";
+import "./ExploreGrid.css";
 
 function ExploreGrid() {
-  const cards = [
-    {
-      id: 2,
-      title: 'Sicily & Malta Getaway',
-      text: '10 Days, 6 Cities',
-      image: sicilyImg,
-    },
-    {
-      id: 3,
-      title: 'Holi in India: The Golden Triangle',
-      text: '9 Days, 4 Cities',
-      image: indiaImg,
-    },
-    {
-      id: 4,
-      title: 'Mexico City: Day of the Dead',
-      text: '7 Days, 1 City',
-      image: mexicoImg,
-    },
-    {
-      id: 5,
-      title: 'Hemisphere Hopper: Alaska to Argentina',
-      text: '60 Days, 29 Cities',
-      image: alaskaImg,
-    },
-    {
-      id: 6,
-      title: 'Highlights of Japan',
-      text: '14 Days, 6 Cities',
-      image: japanImg,
-    },
-    {
-      id: 1,
-      title: 'Australia and New Zealand Adventure',
-      text: '21 Days, 9 Cities',
-      image: australiaImg,
-    },
-  ];
+  const [trips, setTrips] = useState([]);
+  const imgs = {
+    australia: australiaImg,
+    italy: italyImg,
+    india: indiaImg,
+    mexico: mexicoImg,
+    argentina: argentinaImg,
+    japan: japanImg,
+  };
+  useEffect(() => {
+    axios
+      .get("/api/public/trips")
+      .then((response) => {
+        setTrips(response.data);
+      })
+      .catch((error) => {
+        alert(JSON.stringify(error));
+      });
+  }, []);
 
   return (
-      <div className="card-grid-container">
-        <Row xs={1} md={3} className="g-4">
-          {cards.map((card) => (
-              <Col key={card.id}>
-                <ExploreCard title={card.title} text={card.text} image={card.image} id={card.id} />
-              </Col>
-          ))}
-        </Row>
-      </div>
+    <div className="card-grid-container">
+      <Row xs={1} md={3} className="g-4">
+        {trips.map((trip, idx) => (
+          <Col key={idx}>
+            <ExploreCard
+              title={trip.country}
+              text={trip.title}
+              image={imgs[trip.country.toLowerCase()]}
+              id={trip.tripId}
+            />
+          </Col>
+        ))}
+      </Row>
+    </div>
   );
 }
 

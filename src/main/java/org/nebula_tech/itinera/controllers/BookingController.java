@@ -35,7 +35,6 @@ public class BookingController {
 
     @GetMapping("/bookings")
     public List<Booking> getBookings(HttpServletRequest request) throws StripeException {
-        // todo: get email from session.getAttribute(userEmail);
         Stripe.apiKey = stripeApiKey;
         String email = (String) request.getSession().getAttribute("userEmail");
         CustomerCollection customers = Customer.list(
