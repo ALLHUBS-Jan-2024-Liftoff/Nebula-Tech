@@ -2,7 +2,6 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import LandingPage from './pages/LandingPage'
-import DemoPage from './pages/DemoPage'
 import ContactPage from './pages/ContactPage'
 import Blog from './components/blog/Blog'
 import TripDetailsPage from './pages/TripDetailsPage'
@@ -12,16 +11,15 @@ import RegisterForm from "./pages/RegisterForm.jsx"
 import LoginForm from "./pages/LoginForm.jsx"
 import ExplorePage from "./pages/ExplorePage.jsx"
 import UserDashboard from "./pages/UserDashboard.jsx"
+import WhatWeDoPage from "./pages/WhatWeDoPage.jsx"
+import FAQPage from './pages/FAQPage.jsx';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import './assets/styles/global.css'
+
 const router = createBrowserRouter([
   {
     path: "/",
     element: <LandingPage/>,
-  },
-  {
-    path: "/demo",
-    element: <DemoPage/>,
   },
   {
     path: "/contact",
@@ -58,6 +56,14 @@ const router = createBrowserRouter([
   {
     path: "/explore",
     element: <ExplorePage />,
+  },
+  {
+    path: "/faq",
+    element: <FAQPage />,
+  },
+  {  
+    path: "/about",
+    element: <WhatWeDoPage />,
   },
 ]);
 

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 import NavBar from '../components/common/NavBar';
 import CommonFooter from '../components/common/CommonFooter';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -10,6 +11,8 @@ const LoginForm = () => {
         username: '',
         password: ''
     });
+
+    const navigate = useNavigate();
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -24,6 +27,7 @@ const LoginForm = () => {
         try {
             const response = await axios.post('/api/public/login', formData);
             console.log(response.data);
+            navigate('/dashboard');
         } catch (error) {
             console.error('There was an error logging in!', error);
         }

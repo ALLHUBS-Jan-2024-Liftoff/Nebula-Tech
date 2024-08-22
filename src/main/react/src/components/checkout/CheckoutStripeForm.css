@@ -33,3 +33,29 @@
     padding: 10px 24px;
     width: 100%;
 }
+.checkout-stripe-form-spinner {
+    width: 100%;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.checkout-stripe-form-spinner div {
+    width: 80px;
+    height: 80px;
+    border: 5px solid #f4f0e9;
+    border-bottom-color: #3b70d6;
+    border-radius: 50%;
+    display: inline-block;
+    box-sizing: border-box;
+    animation: rotation 1s linear infinite;
+}
+
+@keyframes rotation {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+} 
