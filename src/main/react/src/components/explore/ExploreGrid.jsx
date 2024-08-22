@@ -1,7 +1,13 @@
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import ExploreCard from './ExploreCard';
-import './ExploreGrid.css'
+import sicilyImg from '../../assets/images/sicily.jpg';
+import indiaImg from '../../assets/images/india.jpg';
+import mexicoImg from '../../assets/images/mexico.jpg';
+import alaskaImg from '../../assets/images/alaska.jpg';
+import japanImg from '../../assets/images/japanImg.jpg';
+import australiaImg from '../../assets/images/australia-city.jpg';
+import './ExploreGrid.css';
 
 
 function ExploreGrid() {
@@ -9,57 +15,40 @@ function ExploreGrid() {
     {
       id: 1,
       title: 'Sicily & Malta Getaway',
-      text: '10 days, 6 cities',
-      image: 'holder.js/100px160',
+      text: '10 Days, 6 Cities',
+      image: sicilyImg,
     },
     {
       id: 2,
       title: 'Holi in India: The Golden Triangle',
-      text: '9 days, 4 cities',
-      image: 'holder.js/100px160',
+      text: '9 Days, 4 Cities',
+      image: indiaImg,
     },
     {
     id: 3,
     title: 'Mexico City: Day of the Dead',
-    text: '7 days, 1 city',
-    image: 'holder.js/100px160',
+    text: '7 Days, 1 City',
+    image: mexicoImg,
     },
     {
     id: 4,
-    title: 'Card 4',
-    text: 'This is card 4',
-    image: 'holder.js/100px160',
+    title: 'Hemisphere Hopper: Alaska to Argentina',
+    text: '60 Days, 29 Cities',
+    image: alaskaImg,
     },
     {
     id: 5,
-    title: 'Card 5',
-    text: 'This is card 5',
-    image: 'holder.js/100px160',
+    title: 'Highlights of Japan',
+    text: '14 Days, 6 Cities',
+    image: japanImg,
     },
     {
     id: 6,
-    title: 'Card 6',
-    text: 'This is card 6',
-    image: 'holder.js/100px160',
+    title: 'Australia and New Zealand Adventure',
+    text: '21 Days, 9 Cities',
+    image: australiaImg,
     },
-    {
-    id: 7,
-    title: 'Card 7',
-    text: 'This is card 7',
-    image: 'holder.js/100px160',
-    },
-    {
-    id: 8,
-    title: 'Card 8',
-    text: 'This is card 8',
-    image: 'holder.js/100px160',
-    },
-    {
-    id: 9,
-    title: 'Card 9',
-    text: 'This is card 9',
-    image: 'holder.js/100px160',
-    },
+
 
   ];
 
