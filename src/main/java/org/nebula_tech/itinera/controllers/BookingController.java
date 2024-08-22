@@ -5,6 +5,7 @@ import com.stripe.exception.StripeException;
 import com.stripe.model.Customer;
 import com.stripe.model.CustomerCollection;
 import com.stripe.param.CustomerListParams;
+import jakarta.servlet.http.HttpServletRequest;
 import org.nebula_tech.itinera.models.Booking;
 import org.nebula_tech.itinera.models.Trip;
 import org.nebula_tech.itinera.repositories.BookingRepository;
@@ -33,9 +34,10 @@ public class BookingController {
     }
 
     @GetMapping("/bookings")
-    public List<Booking> getBookings(@RequestParam String email) throws StripeException {
+    public List<Booking> getBookings(HttpServletRequest request) throws StripeException {
         // todo: get email from session.getAttribute(userEmail);
         Stripe.apiKey = stripeApiKey;
+        String email = (String) request.getSession().getAttribute("userEmail");
         CustomerCollection customers = Customer.list(
             CustomerListParams.builder()
                 .setEmail(email)

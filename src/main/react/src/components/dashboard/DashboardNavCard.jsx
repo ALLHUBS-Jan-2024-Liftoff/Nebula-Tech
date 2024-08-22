@@ -9,6 +9,7 @@ function DashboardNavCard() {
     const [activeTab, setActiveTab] = useState('#account');
     const [userData, setUserData] = useState(null); // Initial state is null
     const [wishlist, setWishlist] = useState([]);
+    const [isLoggedIn, setIsLoggedIn] = useState(false); // New state to track if the user is logged in
     const [editing, setEditing] = useState(false);
     const [formData, setFormData] = useState({
         username: '',
@@ -16,6 +17,8 @@ function DashboardNavCard() {
         lastName: '',
         email: ''
     });
+    const [bookings, setBookings] = useState([]);
+
 
     useEffect(() => {
         const fetchUserData = async () => {
@@ -23,6 +26,7 @@ function DashboardNavCard() {
                 console.log("Attempting to fetch user data...");
                 const response = await axios.get('/api/public/user');
                 console.log("User data fetched:", response.data);
+                setIsLoggedIn(true); // User is logged in
                 setUserData(response.data);
                 setFormData({
                     username: response.data.username,
@@ -36,6 +40,35 @@ function DashboardNavCard() {
         };
         fetchUserData();
     }, []);
+
+    useEffect(() => {
+        if (isLoggedIn) {
+            const fetchBookings = async () => {
+                try {
+                    const response = await axios.get('/api/private/bookings');
+                    setBookings(response.data);
+                } catch (error) {
+                    console.error('Error fetching bookings:', error.response ? error.response.data : error.message);
+                }
+            };
+            fetchBookings();
+        }
+    }, [isLoggedIn]);
+
+    // Fetch wishlist only if the user is logged in
+    useEffect(() => {
+        if (isLoggedIn) {
+            const fetchWishlist = async () => {
+                try {
+                    const response = await axios.get('/api/public/user');
+                    setWishlist(response.data.wishlist);
+                } catch (error) {
+                    console.error('Error fetching wishlist:', error.response ? error.response.data : error.message);
+                }
+            };
+            fetchWishlist();
+        }
+    }, [isLoggedIn]);
 
     const handleEditClick = () => {
         setEditing(true);
@@ -67,17 +100,6 @@ function DashboardNavCard() {
         });
     };
 
-    useEffect(() => {
-        const fetchWishlist = async () => {
-            try {
-                const response = await axios.get('/api/public/user');
-                setWishlist(response.data.wishlist);
-            } catch (error) {
-                console.error('Error fetching wishlist:', error.response ? error.response.data : error.message);
-            }
-        };
-        fetchWishlist();
-    }, []);
     return (
         <Card>
             <Card.Header>
@@ -156,7 +178,20 @@ function DashboardNavCard() {
                 {activeTab === '#bookings' && (
                     <div>
                         <Card.Title>My Bookings</Card.Title>
-                        <Card.Text>Nothing yet. Book a trip and view the details here!</Card.Text>
+                        {!bookings.length ? (
+                            <Card.Text>Nothing yet. Book a trip and view the details here!</Card.Text>
+                        ) : (
+                            bookings.map(booking => (
+                                <div key={booking.bookingId}>
+                                    <Link to={`/trip/${booking.trip.tripId}`}>
+                                        <p><strong>{booking.trip.title}</strong></p>
+                                        <p>Date: {booking.trip.date}</p>
+                                        <p>Price: ${booking.trip.price / 100}</p> {/* Assuming price is in cents */}
+                                    </Link>
+                                    <p><strong>Customer:</strong> {booking.account.firstName} {booking.account.lastName}</p>
+                                </div>
+                            ))
+                        )}
                     </div>
                 )}
                 {activeTab === '#wishlist' && (
