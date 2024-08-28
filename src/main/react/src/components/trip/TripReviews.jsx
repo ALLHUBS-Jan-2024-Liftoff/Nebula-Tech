@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { StarFill, ArrowDown, ArrowLeft, ArrowRight } from 'react-bootstrap-icons';
+import { StarFill } from 'react-bootstrap-icons';
 import axios from 'axios';
 import "./TripReviews.css";
 
@@ -9,17 +9,24 @@ function TripReviews({ tripId, userId }) {
     const [rating, setRating] = useState(0);
 
     useEffect(() => {
-        // Fetch reviews from the backend
+        // Fetch all reviews for the trip
         axios.get(`/api/public/trips/${tripId}/reviews`)
-            .then(response => setReviews(response.data))
+            .then(response => {
+                console.log("Fetched reviews:", response.data); // Log to check
+                setReviews(response.data);
+            })
             .catch(error => console.error("Failed to fetch reviews:", error));
     }, [tripId]);
 
     const handleSubmitReview = () => {
-        // Post new review to the backend
+        if (!userId) {
+            alert("You must be logged in to leave a review.");
+            return;
+        }
+
         axios.post(`/api/public/trips/${tripId}/reviews`, { content: newReview, rating }, { params: { userId } })
             .then(response => {
-                setReviews(prevReviews => [...prevReviews, response.data]); // Add new review to the state
+                setReviews(prevReviews => [...prevReviews, response.data]); // Update state with new review
                 setNewReview(''); // Clear form
                 setRating(0);
             })
@@ -27,24 +34,23 @@ function TripReviews({ tripId, userId }) {
     };
 
     return (
-        <>
-            <div className="m-trip-reviews-container">
-                <section id="m-trip-reviews-section">
-                    <h2>Reviews</h2>
-                    {reviews.map((review, index) => (
-                        <div key={index} className="m-trip-reviews-item">
-                            <div className="m-trip-reviews-title">{review.user.username}: {review.title}</div>
-                            <div className="m-trip-reviews-rating-and-author">
-                                {[...Array(review.rating)].map((_, i) => (
-                                    <StarFill key={i} color="#f05e40" size={14} />
-                                ))}
-                                <p>{review.user.username}, traveled in {review.date}</p>
-                            </div>
-                            <p className="m-trip-reviews-body">{review.content}</p>
+        <div className="m-trip-reviews-container">
+            <section id="m-trip-reviews-section">
+                <h2>Reviews</h2>
+                {reviews.length > 0 ? reviews.map((review, index) => (
+                    <div key={index} className="m-trip-reviews-item">
+                        <div className="m-trip-reviews-title">{review.user.username}: {review.title}</div>
+                        <div className="m-trip-reviews-rating-and-author">
+                            {[...Array(review.rating)].map((_, i) => (
+                                <StarFill key={i} color="#f05e40" size={14} />
+                            ))}
+                            <p>{review.user.username}, traveled in {review.date}</p>
                         </div>
-                    ))}
+                        <p className="m-trip-reviews-body">{review.content}</p>
+                    </div>
+                )) : <p>No reviews available for this trip.</p>} {/* Handle case with no reviews */}
 
-                    {/* Review Form */}
+                {userId && (
                     <div className="m-trip-reviews-form">
                         <textarea
                             value={newReview}
@@ -61,9 +67,9 @@ function TripReviews({ tripId, userId }) {
                         </div>
                         <button onClick={handleSubmitReview}>Submit Review</button>
                     </div>
-                </section>
-            </div>
-        </>
+                )}
+            </section>
+        </div>
     );
 }
 

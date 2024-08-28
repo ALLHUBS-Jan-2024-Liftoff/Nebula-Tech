@@ -19,16 +19,17 @@ function TripDetailsPage() {
     useEffect(() => {
         // Fetch user data on component mount
         const fetchUserData = async () => {
-            try {
-                const response = await axios.get('/api/public/user');
-                setIsLoggedIn(true);
-                setUserData(response.data);
-            } catch (error) {
-                console.error('Error fetching user data:', error.response ? error.response.data : error.message);
-            }
-        };
-        fetchUserData();
-    }, []);
+                    try {
+                        const response = await axios.get('/api/public/user');
+                        setIsLoggedIn(true);
+                        setUserData(response.data);
+                    } catch (error) {
+                        console.log('User is not logged in');
+                    }
+                };
+                fetchUserData();
+            }, []);
+
 
     useEffect(() => {
         // Fetch trip details
@@ -43,19 +44,19 @@ function TripDetailsPage() {
     }
 
     return (
-        <>
-            <NavBar />
-            <main>
-                <TourHero trip={tripDetails} />
-                <TourNav />
-                <TourOverview trip={tripDetails} />
-                <TourItinerary />
-                <TravelerPhotos />
-                <TripReviews tripId={id} userId={userData.id} /> {/* Use userId from fetched data */}
-            </main>
-            <CommonFooter />
-        </>
-    );
+            <>
+                <NavBar />
+                <main>
+                    <TourHero trip={tripDetails} />
+                    <TourNav />
+                    <TourOverview trip={tripDetails} />
+                    <TourItinerary />
+                    <TravelerPhotos />
+                    <TripReviews tripId={id} userId={isLoggedIn ? userData.id : null} /> {/* Pass userId if logged in */}
+                </main>
+                <CommonFooter />
+            </>
+        );
 }
 
 export default TripDetailsPage;

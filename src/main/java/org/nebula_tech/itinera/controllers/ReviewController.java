@@ -14,11 +14,13 @@ public class ReviewController {
     @Autowired
     private ReviewService reviewService;
 
+    // Fetch all reviews for a trip (publicly accessible)
     @GetMapping
     public List<Review> getReviews(@PathVariable Long tripId) {
         return reviewService.getReviewsByTripId(tripId);
     }
 
+    // Only logged-in users can add reviews
     @PostMapping
     public Review addReview(@PathVariable Long tripId, @RequestParam Integer userId, @RequestBody Review review) {
         return reviewService.addReview(tripId, userId, review.getContent(), review.getRating());
