@@ -13,16 +13,27 @@ import TripReviews from '../components/trip/TripReviews'
 function TripDetailsPage() {
   const { id } = useParams();
   const [tripDetails, setTripDetails] = useState({dates: []});
+  const [reviews, setReviews] = useState([]);
 
   useEffect(() => {
       window.scrollTo({ top: 0, left: 0, behavior: "instant" });
   }, []);
 
-  useEffect(() => {
-      axios.get('/api/public/trips/' + ("123456".includes(id) ? id : "1"))
-        .then(response => { setTripDetails(response.data) })
-        .catch(error => { alert(JSON.stringify(error)); });
-  }, []);
+//   useEffect(() => {
+//       axios.get('/api/public/trips/' + ("123456".includes(id) ? id : "1"))
+//         .then(response => { setTripDetails(response.data) })
+//         .catch(error => { alert(JSON.stringify(error)); });
+//   }, []);
+
+   useEffect(() => {
+        axios.get(`/api/public/trips/${id}`)
+          .then(response => setTripDetails(response.data))
+          .catch(error => alert(JSON.stringify(error)));
+
+        axios.get(`/api/public/reviews/trip/${id}`)
+          .then(response => setReviews(response.data))
+          .catch(error => alert(JSON.stringify(error)));
+    }, [id]);
 
   return (
     <>
@@ -33,7 +44,7 @@ function TripDetailsPage() {
         <TourOverview trip={tripDetails} />
         <TourItinerary />
         <TravelerPhotos />
-        <TripReviews />
+         <TripReviews reviews={reviews} />
       </main>
       <CommonFooter/>
     </>
