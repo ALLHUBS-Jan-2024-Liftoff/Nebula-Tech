@@ -19,8 +19,6 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Map;
 import java.util.Optional;
 
-
-
 @RestController
 @RequestMapping("/api/public")
 public class AuthenticationController {
@@ -34,53 +32,39 @@ public class AuthenticationController {
     private static final String userSessionKey = "userID";
 
     private void logSessionDetails(HttpSession session) {
-        // Log the session ID
         System.out.println("Session ID: " + session.getId());
-
-        // Log the session attributes
         System.out.println("Session Contents: ");
         session.getAttributeNames().asIterator().forEachRemaining(attrName ->
                 System.out.println(attrName + ": " + session.getAttribute(attrName))
         );
     }
 
-
-
     @PostMapping("/register")
     public ResponseEntity<?> processRegistrationForm(@RequestBody @Valid RegisterFormDTO registerFormDTO, HttpSession session) {
-        // Validate that the two passwords match
         if (!registerFormDTO.getPassword().equals(registerFormDTO.getVerifyPassword())) {
             return ResponseEntity.badRequest().body("Passwords do not match");
         }
 
-        // Check if the username already exists
         Optional<User> existingUser = userRepository.findByUsername(registerFormDTO.getUsername());
         if (existingUser.isPresent()) {
             return ResponseEntity.badRequest().body("Username already exists");
         }
 
-        // Create and save the new user
         User newUser = new User(registerFormDTO.getUsername(), registerFormDTO.getPassword(), registerFormDTO.getFirstName(), registerFormDTO.getLastName(), registerFormDTO.getEmail());
         userRepository.save(newUser);
 
-        // Set user in session
         setUserInSession(session, newUser);
 
-        // Store registration form information in the session
         session.setAttribute("registrationForm", registerFormDTO);
 
-        // Log user and session details
         System.out.println("User registered successfully: " + newUser.getUsername());
         logSessionDetails(session);
 
-
-        // Return success response
         return ResponseEntity.ok("User registered successfully");
     }
 
     @PostMapping("/login")
     public ResponseEntity<?> processLoginForm(@RequestBody @Valid LoginFormDTO loginFormDTO, HttpSession session) {
-        // Find user by username
         Optional<User> userOptional = userRepository.findByUsername(loginFormDTO.getUsername());
         if (userOptional.isEmpty()) {
             return ResponseEntity.badRequest().body("Invalid username or password");
@@ -88,22 +72,18 @@ public class AuthenticationController {
 
         User user = userOptional.get();
 
-        // Validate password
         if (!user.isMatchingPassword(loginFormDTO.getPassword())) {
             return ResponseEntity.badRequest().body("Invalid username or password");
         }
 
-        // Set user in session
         setUserInSession(session, user);
 
         System.out.println("User logged in successfully: " + user.getUsername());
         logSessionDetails(session);
 
-        // Return success response
         return ResponseEntity.ok("User logged in successfully");
     }
 
-    // Method to get user details from the session
     @GetMapping("/user")
     public ResponseEntity<?> getUserInfo(HttpSession session) {
         System.out.println("Attempting to retrieve user from session...");
@@ -118,12 +98,10 @@ public class AuthenticationController {
 
     @PostMapping("/logout")
     public ResponseEntity<?> logout(HttpSession session) {
-        session.invalidate();  // Invalidate the session
+        session.invalidate();
         System.out.println("User logged out successfully. Session invalidated.");
         return ResponseEntity.ok("User logged out successfully");
     }
-
-
 
     public User getUserFromSession(HttpSession session) {
         Integer userId = (Integer) session.getAttribute(userSessionKey);
@@ -147,13 +125,12 @@ public class AuthenticationController {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("User not logged in");
         }
 
-        // Update user details
         user.setUsername(userProfileUpdateDTO.getUsername());
         user.setEmail(userProfileUpdateDTO.getEmail());
         user.setFirstName(userProfileUpdateDTO.getFirstName());
         user.setLastName(userProfileUpdateDTO.getLastName());
 
-        userRepository.save(user); // Save the updated user
+        userRepository.save(user);
 
         return ResponseEntity.ok(user);
     }
@@ -162,9 +139,6 @@ public class AuthenticationController {
         session.setAttribute(userSessionKey, user.getId());
         session.setAttribute("userEmail", user.getEmail());
     }
-
-
-
 
     @PostMapping("/wishlist/add")
     public ResponseEntity<?> addToWishlist(@RequestBody Map<String, Long> payload, HttpSession session) {

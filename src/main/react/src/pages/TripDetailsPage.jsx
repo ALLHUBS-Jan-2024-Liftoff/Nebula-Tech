@@ -38,7 +38,6 @@ function TripDetailsPage() {
         <TourOverview trip={tripDetails} />
         <TourItinerary />
         <TravelerPhotos />
-        {/* Pass tripDetails to TripReviews */}
         <TripReviews reviews={reviews} trip={tripDetails} />
       </main>
       <CommonFooter />
