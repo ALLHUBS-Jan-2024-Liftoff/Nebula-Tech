@@ -6,5 +6,5 @@ import java.util.List;
 
 public interface ReviewRepository extends CrudRepository<Review, Long> {
     List<Review> findByTrip_TripId(Long tripId);
-    List<Review> findByUserId(Integer userId);
+    List<Review> findByUser_Id(Integer userId);
 }
