@@ -15,6 +15,9 @@ import WhatWeDoPage from "./pages/WhatWeDoPage.jsx"
 import FAQPage from './pages/FAQPage.jsx';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import './assets/styles/global.css'
+import AdminLoginPage from "./pages/AdminLoginPage.jsx";
+import AdminDashboardPage from "./pages/AdminDashboardPage.jsx";
+import AdminUserEditPage from "./pages/AdminUserEditPage.jsx";
 
 const router = createBrowserRouter([
   {
@@ -45,6 +48,20 @@ const router = createBrowserRouter([
     path: "/login",
     element: <LoginForm />,
   },
+
+  {
+      path: "/admin",
+      element: <AdminLoginPage />,
+  },
+  {
+      path: "/admin/dashboard",
+      element: <AdminDashboardPage />,
+  },
+  {
+      path: "/admin/users/:id",
+      element: <AdminUserEditPage />,
+  },
+
   {
     path: "/register",
     element: <RegisterForm />,

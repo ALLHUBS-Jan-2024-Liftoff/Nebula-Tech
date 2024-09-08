@@ -38,7 +38,7 @@ const LoginForm = () => {
             <NavBar />
             <div className="login-content">
                 <div className="login-section-column">
-                    <img src="https://picsum.photos/200" alt="Login Illustration" />
+                    <img src= 'https://picsum.photos/200/300' alt="Login Illustration" />
                 </div>
                 <div className="login-section-column">
                     <form className="login-form" onSubmit={handleSubmit}>

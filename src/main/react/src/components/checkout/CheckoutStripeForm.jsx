@@ -14,7 +14,7 @@ function CheckoutStripeForm({ onFormChange, checkoutData }) {
     //    calls `loadStripe` outside of component's render
     //      to prevent recreating `Stripe` object on each render
 //     setStripePromise(loadStripe("pk_test_51PpG87RvZv1FNR3S1USwiupYO4OjIeUaEtcycLSpNmF1xBEYG8fS7QRRerhxW0KMALPIoHPt67n4IuDIhBRYtfhE00iHVr1j02"));
-      setStripePromise(loadStripe("pk_test_jW3zmhFPY3tGBhUUk99UwgRv008Lwuldbx"));
+      setStripePromise(loadStripe("pk_test_51PpG8H2La9a4vNdJR5GACq2Olcia0exqDohXihyTEUXhzN0447LCo9ptwIvn50tzQyqrol3LBlJsFiMYWhDhbAGO00S60rEUKN"));
   }, []);
 
   const firstRender = useRef(true);
