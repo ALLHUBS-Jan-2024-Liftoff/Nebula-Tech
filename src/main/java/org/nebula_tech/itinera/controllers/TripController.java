@@ -105,6 +105,11 @@ public class TripController {
         india.setDates(indiaDates);
         trips.add(india);
 
+        Trip holland = new Trip();
+        holland.setTitle("Holland: Land of Tulips");
+        holland.setCountry("");
+        Map<String, List<TripDatePrice>> hollandDates = new HashMap<>();
+
         Trip mexico = new Trip();
         mexico.setTitle("Mexico City: Day of the Dead");
         mexico.setCountry("Mexico");
